@@ -1,8 +1,10 @@
 ---
 title: Le ballon dirigeable
 excerpt: >-
-  Ce pack de base est destiné à tout le monde, vraiment cool et pas très
-  cher, pensez-y
+  Ce pack de base est destiné à tout le monde, vraiment cool et pas très cher,
+  pensez-y
+bgColor: saumon
+color: pink
 ---
 ### TECHNOLOGIES
 
