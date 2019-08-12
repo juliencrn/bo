@@ -3,6 +3,8 @@ title: La fusée spatiale
 excerpt: >-
   Ce pack haut de gamme est destiné à tout le monde, vraiment cool et pas très
   cher, pensez-y
+bgColor: green
+color: saumon
 ---
 ### TECHNOLOGIES
 
