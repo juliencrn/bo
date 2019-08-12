@@ -1,7 +1,7 @@
 ---
-title: Le ballon dirigeable
+title: La fusée spatiale
 excerpt: >-
-  Ce pack de base est destiné à tout le monde, vraiment cool et pas très
+  Ce pack haut de gamme est destiné à tout le monde, vraiment cool et pas très
   cher, pensez-y
 ---
 ### TECHNOLOGIES

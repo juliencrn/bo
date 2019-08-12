@@ -1,7 +1,7 @@
 ---
-title: Le ballon dirigeable
+title: La Roll Royce
 excerpt: >-
-  Ce pack de base est destiné à tout le monde, vraiment cool et pas très
+  Ce pack intermédiaire est destiné à tout le monde, vraiment cool et pas très
   cher, pensez-y
 ---
 ### TECHNOLOGIES

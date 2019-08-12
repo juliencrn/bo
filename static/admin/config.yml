@@ -18,4 +18,16 @@ collections:
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: excerpt, label: Extrait, widget: text }
+      - {
+          name: bgColor,
+          label: Couleur du fond,
+          widget: select,
+          options: ["green", "saumon", "pink"]
+        }
+      - {
+          name: color,
+          label: Couleur du texte,
+          widget: select,
+          options: ["green", "saumon", "pink"]
+      }
       - { name: body, label: Contenu, widget: markdown }
