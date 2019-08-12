@@ -1,8 +1,9 @@
-const siteDescription = 'Gatsby Starter powered by MDX and Theme UI.'
+const siteDescription =
+  'Official Bengale Studio website using gatsby & netlify-cms.'
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby starter',
+    title: 'Bengale Studio',
     description: siteDescription,
     author: `@Junscuzzy`
   },
@@ -15,7 +16,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/assets/images`
+        path: `${__dirname}/static/images`
       }
     },
     {
@@ -30,14 +31,16 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `fonts`,
-        path: `${__dirname}/assets/fonts`
+        path: `${__dirname}/static/fonts`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `content`,
-        path: `${__dirname}/content`
+        path: `${__dirname}/content`,
+        // eslint-disable-next-line
+        ignore: [`**/\.*`] // ignore files starting with a dot
       }
     },
     {
@@ -79,14 +82,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'MDX + Theme UI - Gatsby Starter', // Alternative Site title for SEO
-        short_name: 'Gatsby-starter',
+        name: 'Bengale Studio', // Alternative Site title for SEO
+        short_name: 'bengale-studio',
         description: siteDescription,
         start_url: `/`,
         background_color: '#2b2e3c',
         theme_color: '#3498DB',
         display: 'standalone',
-        icon: 'src/favicon.png'
+        icon: 'static/favicon.png'
       }
     },
     // {
@@ -95,11 +98,21 @@ module.exports = {
     //     trackingId: config.googleAnalyticsID,
     //     head: true,
     //     anonymize: true,
+    //    exclude: ['/preview/**', '/do-not-track/me/too/']
     //   },
     // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        // modulePath: `path/to/custom/script.js`, // default: undefined
+        // enableIdentityWidget: true,
+        publicPath: `admin`,
+        htmlTitle: `Bengale Studio`
+      }
+    },
     `gatsby-plugin-netlify`
   ]
 }

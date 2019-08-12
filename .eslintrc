@@ -1,5 +1,10 @@
 {
     "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
     "env": {
         "browser": true,
         "es6": true,
@@ -8,20 +13,25 @@
     "extends": [
         "airbnb",
         "prettier",
-        "prettier/react"
+        "prettier/react",
+        "plugin:react/recommended"
     ],
     "settings": {
         "react": {
+            "pragma": "React",
             "version": "detect"
         }
     },
-    "plugins": ["prettier", "react-hooks"],
+    "plugins": ["react" ,"prettier", "react-hooks"],
     "rules": {
         "prettier/prettier": "error",
         "implicit-arrow-linebreak": "off",
         "react/jsx-filename-extension": [1, {
             "extensions": [".js", ".jsx"]
         }],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
         "comma-dangle": "off",
         "no-absolute-path": 0,
         "no-console": "off",

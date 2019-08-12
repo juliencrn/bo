@@ -1,0 +1,21 @@
+# Netlify-cms config file
+backend:
+#  name: test-repo     # Used for create fields
+  name: github        # Used during development
+#  name: git-gateway   # Used for production
+
+  branch: master
+  repo: Junscuzzy/bo
+
+media_folder: static/uploads
+public_folder: uploads
+
+collections:
+  - name: packs
+    label: Packs
+    folder: content/packs
+    create: true
+    fields:
+      - { name: title, label: Titre, widget: string }
+      - { name: excerpt, label: Extrait, widget: text }
+      - { name: body, label: Contenu, widget: markdown }
