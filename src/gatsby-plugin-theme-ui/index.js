@@ -11,9 +11,11 @@ export const colors = {
   red: `#ff2b4a`,
   fushia: `#ff196b`,
   saumon: `#ffa5b9`,
+  saumonLight: `#f3a9bb`,
   marine: `#060c1d`,
   white: `#fff`,
   pink: `#ff9ad6`,
+  pinkLight: `#ffc0e5`,
   darkBlue: `#111447`
 }
 

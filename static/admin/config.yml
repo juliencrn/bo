@@ -1,7 +1,7 @@
 # Netlify-cms config file
 backend:
-#  name: test-repo     # Used for create fields
-  name: github        # Used during development
+  name: test-repo     # Used for create fields
+#  name: github        # Used during development
 #  name: git-gateway   # Used for production
 
   branch: master
@@ -18,16 +18,28 @@ collections:
     fields:
       - { name: title, label: Titre, widget: string }
       - { name: excerpt, label: Extrait, widget: text }
+      - { name: numero, label: Numero du pack, widget: number }
       - {
           name: bgColor,
           label: Couleur du fond,
           widget: select,
-          options: ["green", "saumon", "pink"]
+          options:
+            - { label: "Vert", value: "green" }
+            - { label: "Rose", value: "pink" }
+            - { label: "Saumon", value: "saumon" }
         }
       - {
           name: color,
           label: Couleur du texte,
           widget: select,
-          options: ["green", "saumon", "pink"]
+          options:
+            - { label: "Vert", value: "green" }
+            - { label: "Rose clair", value: "pinkLight" }
+            - { label: "Saumon Clair", value: "saumonLight" }
       }
-      - { name: body, label: Contenu, widget: markdown }
+      - {
+          name: body,
+          label: Contenu,
+          widget: markdown,
+          hint: "Si possible, utiliser uniquement des H3 ou '###' en markdown"
+      }

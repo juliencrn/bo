@@ -3,6 +3,7 @@ title: La Roll Royce
 excerpt: >-
   Ce pack intermédiaire est destiné à tout le monde, vraiment cool et pas très
   cher, pensez-y
+numero: 2
 bgColor: pink
 color: green
 ---

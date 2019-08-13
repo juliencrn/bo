@@ -1,5 +1,5 @@
 # source: http://localhost:8000/___graphql
-# timestamp: Sat Aug 10 2019 00:10:46 GMT+0200 (GMT+02:00)
+# timestamp: Mon Aug 12 2019 14:14:37 GMT+0200 (GMT+02:00)
 
 """Provides default value for input field."""
 directive @default(value: JSON!) on INPUT_FIELD_DEFINITION
@@ -806,6 +806,10 @@ enum FileFieldsEnum {
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
   childMdx___frontmatter___date
+  childMdx___frontmatter___excerpt
+  childMdx___frontmatter___numero
+  childMdx___frontmatter___bgColor
+  childMdx___frontmatter___color
   childMdx___body
   childMdx___excerpt
   childMdx___headings
@@ -1437,6 +1441,10 @@ enum MdxFieldsEnum {
   fileAbsolutePath
   frontmatter___title
   frontmatter___date
+  frontmatter___excerpt
+  frontmatter___numero
+  frontmatter___bgColor
+  frontmatter___color
   body
   excerpt
   headings
@@ -1584,11 +1592,19 @@ type MdxFrontmatter {
     """Configures the locale Moment.js will use to format the date."""
     locale: String
   ): Date
+  excerpt: String
+  numero: Int
+  bgColor: String
+  color: String
 }
 
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
   date: DateQueryOperatorInput
+  excerpt: StringQueryOperatorInput
+  numero: IntQueryOperatorInput
+  bgColor: StringQueryOperatorInput
+  color: StringQueryOperatorInput
 }
 
 type MdxGroupConnection {
@@ -2042,6 +2058,7 @@ enum SitePageFieldsEnum {
   pluginCreator___version
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
+  pluginCreator___pluginOptions___ignore
   pluginCreator___pluginOptions___google___families
   pluginCreator___pluginOptions___extensions
   pluginCreator___pluginOptions___gatsbyRemarkPlugins
@@ -2053,6 +2070,8 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___theme_color
   pluginCreator___pluginOptions___display
   pluginCreator___pluginOptions___icon
+  pluginCreator___pluginOptions___publicPath
+  pluginCreator___pluginOptions___htmlTitle
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
@@ -2231,6 +2250,7 @@ enum SitePluginFieldsEnum {
   version
   pluginOptions___name
   pluginOptions___path
+  pluginOptions___ignore
   pluginOptions___google___families
   pluginOptions___extensions
   pluginOptions___gatsbyRemarkPlugins
@@ -2254,6 +2274,8 @@ enum SitePluginFieldsEnum {
   pluginOptions___theme_color
   pluginOptions___display
   pluginOptions___icon
+  pluginOptions___publicPath
+  pluginOptions___htmlTitle
   pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
@@ -2373,6 +2395,7 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 type SitePluginPluginOptions {
   name: String
   path: String
+  ignore: [String]
   google: SitePluginPluginOptionsGoogle
   extensions: [String]
   gatsbyRemarkPlugins: [SitePluginPluginOptionsGatsbyRemarkPlugins]
@@ -2383,12 +2406,15 @@ type SitePluginPluginOptions {
   theme_color: String
   display: String
   icon: String
+  publicPath: String
+  htmlTitle: String
   pathCheck: Boolean
 }
 
 input SitePluginPluginOptionsFilterInput {
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
+  ignore: StringQueryOperatorInput
   google: SitePluginPluginOptionsGoogleFilterInput
   extensions: StringQueryOperatorInput
   gatsbyRemarkPlugins: SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput
@@ -2399,6 +2425,8 @@ input SitePluginPluginOptionsFilterInput {
   theme_color: StringQueryOperatorInput
   display: StringQueryOperatorInput
   icon: StringQueryOperatorInput
+  publicPath: StringQueryOperatorInput
+  htmlTitle: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
 }
 

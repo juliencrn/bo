@@ -3,8 +3,9 @@ title: Le ballon dirigeable
 excerpt: >-
   Ce pack de base est destiné à tout le monde, vraiment cool et pas très cher,
   pensez-y
+numero: 1
 bgColor: saumon
-color: pink
+color: pinkLight
 ---
 ### TECHNOLOGIES
 

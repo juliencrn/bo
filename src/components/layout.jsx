@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-/** @jsx jsx */
-import { ThemeProvider, jsx, Styled } from 'theme-ui'
+import { ThemeProvider, Styled } from 'theme-ui'
 
 import theme from '../gatsby-plugin-theme-ui'
-import Header from './header'
+// import Header from './header'
 import components from '../gatsby-plugin-theme-ui/components'
 
 import 'normalize.css'
@@ -18,7 +17,7 @@ if (isDev) {
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme} compoments={components}>
     <Styled.root>
-      <Header siteTitle="Gatsby theme starter" />
+      {/* <Header siteTitle="Gatsby theme starter" /> */}
       <main>{children}</main>
     </Styled.root>
   </ThemeProvider>
