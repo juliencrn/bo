@@ -55,7 +55,8 @@
     "react-responsive": "^7.0.0",
     "react-spring": "^8.0.27",
     "tachyons-debug": "^1.1.11",
-    "theme-ui": "^0.2.31"
+    "theme-ui": "^0.2.31",
+    "use-measure": "^0.2.2"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
