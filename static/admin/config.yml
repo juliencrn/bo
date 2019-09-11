@@ -42,7 +42,7 @@ collections:
     folder: content/members
     create: true
     fields:
-      - name: name
+      - name: title
         label: Nom complet
         widget: object
         fields:
