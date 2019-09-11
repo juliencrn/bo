@@ -19,35 +19,32 @@ collections:
       - { name: title, label: Titre, widget: string }
       - { name: excerpt, label: Extrait, widget: text }
       - { name: numero, label: Numero du pack, widget: number }
-      - name: bgColor,
-        label: Couleur du fond,
-        widget: select,
+      - name: bgColor
+        label: Couleur du fond
+        widget: select
         options:
           - { label: "Vert", value: "green" }
           - { label: "Rose", value: "pink" }
           - { label: "Saumon", value: "saumon" }
-      - name: color,
-        label: Couleur du texte,
-        widget: select,
+      - name: color
+        label: Couleur du texte
+        widget: select
         options:
           - { label: "Vert", value: "green" }
           - { label: "Rose clair", value: "pinkLight" }
           - { label: "Saumon Clair", value: "saumonLight" }
-      - name: body,
-        label: Contenu,
-        widget: markdown,
+      - name: body
+        label: Contenu
+        widget: markdown
         hint: "Si possible, utiliser uniquement des H3 ou '###' en markdown"
   - name: members
     label: Membres
     folder: content/members
     create: true
     fields:
-      - name: title
-        label: Nom complet
-        widget: object
-        fields:
-          - { name: firstname, label: Prénom, widget: string }
-          - { name: lastname, label: Nom, widget: string }
+      - { name: title, label: Nom d'affichage, widget: string }
+      - { name: firstname, label: Prénom, widget: string }
+      - { name: lastname, label: Nom, widget: string }
       - { name: profession, label: Profession, widget: string }
       - { name: professionCool, label: Profession Cool, widget: string }
       - { name: mail, label: Email, widget: string }
