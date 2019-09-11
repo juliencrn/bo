@@ -50,9 +50,8 @@ collections:
           - { name: lastname, label: Nom, widget: string }
       - { name: profession, label: Profession, widget: string }
       - { name: professionCool, label: Profession Cool, widget: string }
-      - { name: profession, label: Profession, widget: string }
+      - { name: mail, label: Email, widget: string }
       - { name: avatar, label: Avatar, widget: image, allow_multiple: false }
-      - { name: skills, label: Avantages, widget: string }
       - label: Avantages
         name: skills
         widget: list
