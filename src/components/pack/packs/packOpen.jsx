@@ -4,31 +4,43 @@ import { Styled, jsx, Flex, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
+import PackTitle from './packTitle'
+
 const PackOpen = ({ matches, frontmatter, body }) => {
+  const cols = [4 / 12, 5 / 12, 3 / 12].map(el => `${el * 100}%`)
+  const colWidth = index => (matches ? cols[index - 1] : `100%`)
+  console.log({ cols })
   const { title, color, numero } = frontmatter
   return (
     <Flex
       sx={{
-        width: `100%`,
-        justifyContent: `center`,
-        alignItems: `center`,
-        flexDirection: matches ? `row` : `column`
+        flexDirection: matches ? `row` : `column`,
+        mx: -3
       }}
     >
-      <Box sx={{ textAlign: 'left', width: !matches ? `100%` : `30%` }}>
-        <p sx={{ textTransform: `uppercase`, color, my: 0 }}>
-          {`pack ${numero}`}
-        </p>
-        <Styled.h1 as="h2" sx={{ color, m: 0, fontSize: [6] }}>
-          {title}
-        </Styled.h1>
+      <Box
+        sx={{
+          p: 3,
+          pt: [3, 6],
+          textAlign: 'left',
+          width: colWidth(1)
+        }}
+      >
+        <PackTitle color={color} pack={`pack ${numero}`} title={title} />
       </Box>
-      <Box sx={{ width: !matches ? `100%` : `50%` }}>
+      <Box sx={{ p: 3, width: colWidth(2) }}>
         <MDXRenderer>{body}</MDXRenderer>
       </Box>
-      <Box sx={{ width: !matches ? `100%` : `20%` }}>
+      <Flex
+        sx={{ p: 3, pb: [3, 6] }}
+        style={{
+          width: colWidth(3),
+          alignSelf: 'flex-end',
+          justifyContent: 'center'
+        }}
+      >
         <button>Bouton</button>
-      </Box>
+      </Flex>
     </Flex>
   )
 }

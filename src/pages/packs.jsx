@@ -50,10 +50,14 @@ const PacksPage = ({ data }) => {
   // State
   const [selected, setPack] = useState(null)
   const [matches, setMatches] = useState(isDesktop)
+  const [lastMeasure, setMeasure] = useState(measure)
 
   // On window resize
-  if (isDesktop() !== matches) {
-    setMatches(isDesktop())
+  if (lastMeasure !== measure) {
+    setMeasure(measure)
+    if (isDesktop() !== matches) {
+      setMatches(isDesktop())
+    }
     setPack(null)
   }
 
@@ -75,7 +79,8 @@ const PacksPage = ({ data }) => {
         ref={nodeRef}
         sx={{
           flexDirection: matches ? 'row' : ' column',
-          minHeight: '100vh'
+          height: '100vh',
+          width: '100vw'
         }}
       >
         {packs.map(({ node }) => (

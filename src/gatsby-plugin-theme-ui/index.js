@@ -50,6 +50,22 @@ export const mediaQueries = {
   large: `@media screen and (min-width: ${breakpoints[2]})`
 }
 
+export const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
+
+export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 96]
+
+export const fontWeights = {
+  body: 400,
+  heading: 700,
+  bold: 700
+}
+
+export const lineHeights = {
+  solid: 1,
+  body: 1.5,
+  heading: 1.125
+}
+
 // Shortcut
 const heading = {
   fontFamily: 'heading',
@@ -116,18 +132,10 @@ export const styles = {
 }
 
 export default {
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
-  fontWeights: {
-    body: 400,
-    heading: 700,
-    bold: 700
-  },
-  lineHeights: {
-    solid: 1,
-    body: 1.5,
-    heading: 1.125
-  },
+  space,
+  fontSizes,
+  fontWeights,
+  lineHeights,
   colors,
   mediaQueries,
   sizes,
