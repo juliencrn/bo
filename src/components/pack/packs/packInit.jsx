@@ -2,7 +2,7 @@
 import React from 'react'
 import { jsx, Flex, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
-import PackTitle from './packTitle'
+import PackTitle from '../packTitle'
 
 const PackInit = ({ frontmatter, matches }) => {
   const { title, color, numero, excerpt } = frontmatter

@@ -4,9 +4,9 @@ import { jsx } from 'theme-ui'
 import { useTransition, useChain, animated } from 'react-spring'
 import PropTypes from 'prop-types'
 
-import PackInit from './packInit'
-import PackOpen from './packOpen'
-import PackClosed from './packClosed'
+import PackInit from './packs/packInit'
+import PackOpen from './packs/packOpen'
+import PackClosed from './packs/packClosed'
 import nodeTypes from './packPropsTypes'
 
 export const INIT = 'INIT'
