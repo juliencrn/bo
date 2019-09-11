@@ -1,7 +1,7 @@
 # Netlify-cms config file
 backend:
-  name: test-repo     # Used for create fields
-#  name: github        # Used during development
+#  name: test-repo     # Used for create fields
+  name: github        # Used during development
 #  name: git-gateway   # Used for production
 
   branch: master
@@ -19,27 +19,53 @@ collections:
       - { name: title, label: Titre, widget: string }
       - { name: excerpt, label: Extrait, widget: text }
       - { name: numero, label: Numero du pack, widget: number }
-      - {
-          name: bgColor,
-          label: Couleur du fond,
-          widget: select,
-          options:
-            - { label: "Vert", value: "green" }
-            - { label: "Rose", value: "pink" }
-            - { label: "Saumon", value: "saumon" }
-        }
-      - {
-          name: color,
-          label: Couleur du texte,
-          widget: select,
-          options:
-            - { label: "Vert", value: "green" }
-            - { label: "Rose clair", value: "pinkLight" }
-            - { label: "Saumon Clair", value: "saumonLight" }
-      }
-      - {
-          name: body,
-          label: Contenu,
-          widget: markdown,
-          hint: "Si possible, utiliser uniquement des H3 ou '###' en markdown"
-      }
+      - name: bgColor,
+        label: Couleur du fond,
+        widget: select,
+        options:
+          - { label: "Vert", value: "green" }
+          - { label: "Rose", value: "pink" }
+          - { label: "Saumon", value: "saumon" }
+      - name: color,
+        label: Couleur du texte,
+        widget: select,
+        options:
+          - { label: "Vert", value: "green" }
+          - { label: "Rose clair", value: "pinkLight" }
+          - { label: "Saumon Clair", value: "saumonLight" }
+      - name: body,
+        label: Contenu,
+        widget: markdown,
+        hint: "Si possible, utiliser uniquement des H3 ou '###' en markdown"
+  - name: members
+    label: Membres
+    folder: content/members
+    create: true
+    fields:
+      - name: name
+        label: Nom complet
+        widget: object
+        fields:
+          - { name: firstname, label: Prénom, widget: string }
+          - { name: lastname, label: Nom, widget: string }
+      - { name: profession, label: Profession, widget: string }
+      - { name: professionCool, label: Profession Cool, widget: string }
+      - { name: profession, label: Profession, widget: string }
+      - { name: avatar, label: Avatar, widget: image, allow_multiple: false }
+      - { name: skills, label: Avantages, widget: string }
+      - label: Avantages
+        name: skills
+        widget: list
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: link, label: Lien, widget: string, required: false, hint: Optionel }
+      - label: "Liens sociaux"
+        name: socialLinks
+        widget: list
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: link, label: Lien, widget: string }
+      - name: body
+        label: "Texte de présentation"
+        widget: markdown
+        hint: "N'utilisez pas les fonctions de mises en forme ici."
