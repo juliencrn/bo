@@ -6,6 +6,8 @@ profession: Designer
 professionCool: Charmeuse de couleurs
 mail: juliette@bengale.studio
 avatar: /uploads/juliette.png
+bgColor: saumon
+color: green
 skills:
   - label: Designer Web & Print
 socialLinks:

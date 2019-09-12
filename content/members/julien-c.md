@@ -6,6 +6,8 @@ profession: Développeur Web
 professionCool: Goutou du Javascript
 mail: julien@bengale.studio
 avatar: /uploads/julien.png
+bgColor: red
+color: green
 skills:
   - label: Auteur du blog wp-headless.fr
     link: 'https://wp-headless.fr'

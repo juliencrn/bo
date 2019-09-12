@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Avatar from './avatar'
@@ -8,6 +8,15 @@ import Avatar from './avatar'
 const AvatarList = ({ members }) => {
   return (
     <>
+      <Styled.h2
+        sx={{
+          color: 'red',
+          fontSize: [5, 5, 6],
+          textAlign: 'center'
+        }}
+      >
+        Bengale Studio
+      </Styled.h2>
       {members.map(({ id, frontmatter }) => (
         <Avatar key={id} frontmatter={frontmatter} id={id} />
       ))}

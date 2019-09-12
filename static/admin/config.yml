@@ -49,6 +49,19 @@ collections:
       - { name: professionCool, label: Profession Cool, widget: string }
       - { name: mail, label: Email, widget: string }
       - { name: avatar, label: Avatar, widget: image, allow_multiple: false }
+      - name: bgColor
+        label: Couleur du fond
+        widget: select
+        options:
+          - { label: "Vert", value: "green" }
+          - { label: "rouge", value: "red" }
+          - { label: "Saumon", value: "saumon" }
+      - name: color
+        label: Couleur du mail
+        widget: select
+        options:
+          - { label: "Vert", value: "green" }
+          - { label: "rouge", value: "red" }
       - label: Avantages
         name: skills
         widget: list

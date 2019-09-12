@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import AvatarList from '../components/members/avatarList'
+import AvatarList from '../components/members/avatar/avatarList'
 import BigIntro from '../components/members/bigIntro'
 
 const MembersPage = ({ data }) => {
@@ -36,12 +36,13 @@ const MembersPage = ({ data }) => {
           backgroundColor: 'blue',
           color: 'white',
           minHeight: '100vh',
+          height: '100%',
           width: '100%',
           py: [5, 5, 6]
         }}
       >
         <Container>
-          <BigIntro />
+           <BigIntro />
           <AvatarList members={members} />
         </Container>
       </div>
@@ -87,6 +88,8 @@ export const query = graphql`
             mail
             profession
             professionCool
+            bgColor
+            color
             socialLinks {
               label
               link
