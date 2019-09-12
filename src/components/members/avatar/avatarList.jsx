@@ -17,8 +17,8 @@ const AvatarList = ({ members }) => {
       >
         Bengale Studio
       </Styled.h2>
-      {members.map(({ id, frontmatter }) => (
-        <Avatar key={id} frontmatter={frontmatter} id={id} />
+      {members.map(({ id, ...rest }) => (
+        <Avatar key={id} {...rest} />
       ))}
     </>
   )

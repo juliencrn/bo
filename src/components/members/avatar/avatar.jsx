@@ -7,14 +7,17 @@ import PropTypes from 'prop-types'
 import IconMore from '../../../../static/svg/plus-sign-to-add.svg'
 import Text from './text'
 
-const Avatar = ({ id, frontmatter }) => {
+const Avatar = ({ id, frontmatter, fields }) => {
   const [alignLeft, setAlign] = useState(false)
   const [hover, setHover] = useState(false)
   const { avatar, title, profession, professionCool, bgColor } = frontmatter
+  const { slug } = fields
   return (
-    <Flex
+    <a
+      href={slug}
       key={id}
       sx={{
+        display: 'flex',
         flexDirection: alignLeft ? 'row' : 'row-reverse',
         justifyContent: 'center',
         width: `400px`,
@@ -71,7 +74,7 @@ const Avatar = ({ id, frontmatter }) => {
           }}
         />
       </div>
-    </Flex>
+    </a>
   )
 }
 
@@ -83,6 +86,9 @@ Avatar.propTypes = {
     bgColor: PropTypes.string,
     profession: PropTypes.string,
     professionCool: PropTypes.string
+  }).isRequired,
+  fields: PropTypes.shape({
+    slug: PropTypes.string.isRequired
   }).isRequired
 }
 
