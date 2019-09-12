@@ -1,7 +1,7 @@
 const path = require(`path`)
 
 /**
- * Create Packs
+ * Create Posts
  */
 module.exports = async ({ actions, graphql, reporter }) => {
   // Destructure the createPage function from the actions object

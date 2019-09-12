@@ -1,13 +1,15 @@
 /** @jsx jsx */
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Container, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import AvatarList from '../components/members/avatar/avatarList'
-import BigIntro from '../components/members/bigIntro'
+import BigText from '../components/bigText'
+import Section from '../components/section'
+import Container from '../components/container'
 
 const MembersPage = ({ data }) => {
   // Merge images into members list
@@ -31,21 +33,12 @@ const MembersPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="L'équipe" />
-      <div
-        sx={{
-          backgroundColor: 'blue',
-          color: 'white',
-          minHeight: '100vh',
-          height: '100%',
-          width: '100%',
-          py: [5, 5, 6]
-        }}
-      >
+      <Section bg="blue" color="white">
         <Container>
-           <BigIntro />
+          <BigText />
           <AvatarList members={members} />
         </Container>
-      </div>
+      </Section>
     </Layout>
   )
 }
