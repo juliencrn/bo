@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { Styled, jsx, Flex, Box } from 'theme-ui'
+import { jsx, Flex, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
@@ -26,7 +26,12 @@ const PackOpen = ({ matches, frontmatter, body }) => {
           width: colWidth(1)
         }}
       >
-        <PackTitle color={color} pack={`pack ${numero}`} title={title} />
+        <PackTitle
+          color={color}
+          pack={`pack ${numero}`}
+          title={title}
+          matches={matches}
+        />
       </Box>
       <Box sx={{ p: 3, width: colWidth(2) }}>
         <MDXRenderer>{body}</MDXRenderer>

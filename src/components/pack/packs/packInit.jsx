@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react'
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx, Box } from 'theme-ui'
 import PropTypes from 'prop-types'
 import PackTitle from '../packTitle'
 
@@ -8,7 +8,12 @@ const PackInit = ({ frontmatter, matches }) => {
   const { title, color, numero, excerpt } = frontmatter
   return (
     <>
-      <PackTitle pack={`Pack ${numero}`} title={title} color={color} />
+      <PackTitle
+        pack={`Pack ${numero}`}
+        title={title}
+        color={color}
+        matches={matches}
+      />
       <Box
         sx={{
           width: `100%`,
@@ -28,9 +33,9 @@ PackInit.propTypes = {
     title: PropTypes.string.isRequired,
     excerpt: PropTypes.string.isRequired,
     numero: PropTypes.number.isRequired,
-    color: PropTypes.string.isRequired,
-    matches: PropTypes.bool.isRequired
-  }).isRequired
+    color: PropTypes.string.isRequired
+  }).isRequired,
+  matches: PropTypes.bool.isRequired
 }
 
 export default PackInit
