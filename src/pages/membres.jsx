@@ -1,35 +1,32 @@
 /** @jsx jsx */
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import { Container, jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-
-const introduction =
-  'Aenean eu porta est, vel faucibus tellus. Vestibulum in arcu ultrices, semper velit vel, tempor augue. Nulla vulputate tempus arcu sed mattis. Duis sed tristique magna. Donec accumsan nisi non quam interdum, sit amet dignissim nibh euismod. Duis eu auctor turpis, ac commodo turpis. Mauris non aliquet enim. Sed aliquet neque eget tortor luctus pulvinar. Cras et metus enim. In a erat et odio consectetur ullamcorper a Bengale Studio. Curabitur nec ornare purus. In eget augue in neque dignissim varius sed non ligula.\n' +
-  'Fusce in sapien faucibus, congue odio id, iaculis turpis. Nulla facilisi. Sed nec dolor neque. Nunc viverra in diam in tristique. Vivamus efficitur fringilla purus non tincidunt. Nulla fermentum nibh eu nisl imperdiet ultrices. Nam tincidunt pretium felis, et faucibus mauris dignissim eu. Morbi placerat felis posuere justo viverra, id iaculis felis pharetra. Aliquam vulputate nulla id facilisis commodo. Mauris ante mi, venenatis eu tempus non, finibus.'
-
-const BigIntro = ({ text }) => (
-  <p
-    sx={{
-      fontFamily: 'heading',
-      fontSize: [6],
-      lineHeight: 1,
-      fontWeight: 'heading'
-    }}
-  >
-    {introduction}
-  </p>
-)
-
-const AvatarList = ({ members }) => (
-  <ul>{members.map(member => console.log(member))}</ul>
-)
+import AvatarList from '../components/members/avatarList'
+import BigIntro from '../components/members/bigIntro'
 
 const MembersPage = ({ data }) => {
-  const packs = data.allMdx.edges
+  // Merge images into members list
+  const members = data.members.edges.map(({ node }) => {
+    const image = data.images.nodes.filter(({ absolutePath }) => {
+      const stringToArr = absolutePath.split('/')
+      const rest = stringToArr.splice(stringToArr.length - 2, 2)
+      const filename = `/${rest.join('/')}`
+      return filename === node.frontmatter.avatar
+    })
+
+    return {
+      ...node,
+      frontmatter: {
+        ...node.frontmatter,
+        avatar: image[0]
+      }
+    }
+  })
 
   return (
     <Layout>
@@ -44,8 +41,8 @@ const MembersPage = ({ data }) => {
         }}
       >
         <Container>
-          {/* <BigIntro text={introduction} /> */}
-          <AvatarList members={[]} />
+          <BigIntro />
+          <AvatarList members={members} />
         </Container>
       </div>
     </Layout>
@@ -54,29 +51,62 @@ const MembersPage = ({ data }) => {
 
 MembersPage.propTypes = {
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
-      edges: PropTypes.arrayOf().isRequired
-    }).isRequired
-  }).isRequired
+    images: PropTypes.shape({
+      nodes: PropTypes.arrayOf(PropTypes.object)
+    }),
+    members: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.object)
+    })
+  })
+}
+
+MembersPage.defaultProps = {
+  data: {
+    images: {
+      nodes: []
+    },
+    members: {
+      edges: []
+    }
+  }
 }
 
 export default MembersPage
 
 export const query = graphql`
   query getMembers {
-    allMdx(
-      filter: { fields: { slug: { regex: "//packs//" } } }
-      sort: { order: ASC, fields: frontmatter___numero }
-    ) {
+    members: allMdx(filter: { fields: { slug: { regex: "//members//" } } }) {
       edges {
         node {
+          id
           frontmatter {
+            avatar
             title
-          }
-          fields {
-            slug
+            firstname
+            lastname
+            mail
+            profession
+            professionCool
+            socialLinks {
+              label
+              link
+            }
+            skills {
+              label
+              link
+            }
           }
           body
+        }
+      }
+    }
+    images: allFile(filter: { absolutePath: { regex: "//uploads//" } }) {
+      nodes {
+        absolutePath
+        childImageSharp {
+          fixed(width: 150, height: 150) {
+            ...GatsbyImageSharpFixed
+          }
         }
       }
     }

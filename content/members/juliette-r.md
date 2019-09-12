@@ -1,19 +1,20 @@
 ---
-title:
-  firstname: Nathalie
-  lastname: Caron
-profession: Rédactrice SEO
-professionCool: Ensorceleuse de mots
-mail: nathalie@bengale.studio
-avatar: /uploads/nathalie.jpg
+title: Juliette R.
+firstname: Juliette
+lastname: Rousseaux
+profession: Designer
+professionCool: Charmeuse de couleurs
+mail: juliette@bengale.studio
+avatar: /uploads/juliette.png
 skills:
-  - label: Auteur du Blog Oser Écrire
-    link: 'https://www.oser-ecrire.fr/'
+  - label: Designer Web & Print
 socialLinks:
   - label: Linkedin
-    link: 'https://www.linkedin.com/in/nathalie-caron-512a2417a/'
+    link: 'https://www.linkedin.com/in/juliette-r/'
   - label: Malt
-    link: 'https://www.malt.fr/profile/nathaliecaron'
+    link: 'https://www.malt.fr/profile/julietterousseaux'
+  - label: Behance
+    link: 'https://www.behance.net/julietterousseaux'
 ---
 Vel quam elementum pulvinar etiam non quam lacus. Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Et tortor consequat id porta nibh venenatis cras. Rhoncus est pellentesque elit ullamcorper. Scelerisque eu ultrices vitae auctor eu augue ut lectus. Placerat vestibulum lectus mauris ultrices eros. Et netus et malesuada fames ac. Nisl nisi scelerisque eu ultrices vitae.
 

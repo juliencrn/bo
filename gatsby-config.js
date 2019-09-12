@@ -9,14 +9,20 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/static/images`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `uploads`,
+        path: `${__dirname}/static/uploads`
       }
     },
     {
@@ -63,9 +69,10 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1035,
-              quality: 90,
-              withWebp: true,
               linkImagesToOriginal: false,
+              quality: 90,
+              // withWebp: true,
+              // linkImagesToOriginal: false,
               sizeByPixelDensity: true
             }
           },
@@ -74,6 +81,19 @@ module.exports = {
             options: {
               target: '_blank',
               rel: 'nofollow noopener noreferrer'
+            }
+          }
+        ],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1035,
+              linkImagesToOriginal: false,
+              quality: 90,
+              // withWebp: true,
+              // linkImagesToOriginal: false,
+              sizeByPixelDensity: true
             }
           }
         ]
@@ -111,6 +131,15 @@ module.exports = {
         // enableIdentityWidget: true,
         publicPath: `admin`,
         htmlTitle: `Bengale Studio`
+      }
+    },
+    `gatsby-transformer-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75
       }
     },
     `gatsby-plugin-netlify`
