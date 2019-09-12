@@ -4,6 +4,7 @@ import { jsx, Styled } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Avatar from './avatar'
+import SiteName from '../../sitename'
 
 const AvatarList = ({ members }) => {
   return (
@@ -15,7 +16,7 @@ const AvatarList = ({ members }) => {
           textAlign: 'center'
         }}
       >
-        Bengale Studio
+        <SiteName />
       </Styled.h2>
       {members.map(({ id, ...rest }) => (
         <Avatar key={id} {...rest} />

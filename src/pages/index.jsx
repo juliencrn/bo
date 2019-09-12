@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import React from 'react'
 import { Link } from 'gatsby'
-import { Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
 // import PropTypes from 'prop-types'
 
 import Section from '../components/section'
@@ -29,21 +30,19 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Section>
+      <Section bg="marine">
         <Container>
-          <Styled.h1>Hi people :)</Styled.h1>
-          <p>Welcome to your new Gatsby site.</p>
-          <p>Now go build something great.</p>
-
-          <p>Menu</p>
-          <ul>
-            <li>
-              <Link to="/packs">Packs</Link>
-            </li>
-            <li>
-              <Link to="/membres">Membres</Link>
-            </li>
-          </ul>
+          <h1
+            sx={{
+              color: 'red',
+              fontSize: [5, 5, 6],
+              textAlign: 'center',
+              fontFamily: 'makina',
+              pb: 4
+            }}
+          >
+            Bengale Studio
+          </h1>
         </Container>
       </Section>
     </Layout>
