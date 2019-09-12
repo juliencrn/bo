@@ -58,6 +58,7 @@
     "react-spring": "^8.0.27",
     "tachyons-debug": "^1.1.11",
     "theme-ui": "^0.2.31",
+    "uniqid": "^5.0.3",
     "use-measure": "^0.2.2"
   },
   "devDependencies": {
