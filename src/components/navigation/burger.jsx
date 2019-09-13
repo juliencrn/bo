@@ -1,29 +1,35 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
-import SiteName from '../sitename'
 import Item from './menuItem'
-import { buttonReset } from './buttonReset'
+import { buttonReset } from '../../utils/cssHelpers'
 
-const Burger = ({ onClick, open }) => {
-  return open ? (
-    <p sx={{ m: 0 }}>
-      <Item link="/">
-        <SiteName />
+const Burger = ({ setOpen, label, isXL }) => {
+  return (
+    <button
+      type="button"
+      onMouseEnter={() => isXL && setOpen()}
+      onClick={() => !isXL && setOpen()}
+      sx={buttonReset}
+    >
+      <Item>
+        <span sx={{ fontFamily: 'makina' }}>{label}</span>
       </Item>
-    </p>
-  ) : (
-    <button css={buttonReset} type="button" onClick={() => onClick()}>
-      <Item>BO</Item>
     </button>
   )
 }
 
 Burger.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  setOpen: PropTypes.func.isRequired,
+  isXL: PropTypes.bool.isRequired,
+  label: PropTypes.string
+}
+
+Burger.defaultProps = {
+  label: 'BO'
 }
 
 export default Burger
