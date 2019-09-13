@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useRef } from 'react'
 import { graphql } from 'gatsby'
 import { Flex, jsx } from 'theme-ui'

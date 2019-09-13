@@ -1,6 +1,6 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 // import PropTypes from 'prop-types'
 

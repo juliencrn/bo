@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
@@ -45,6 +46,7 @@ const LinkList = props => {
     <div sx={{ color: 'white' }}>
       {list &&
         list.map(({ link, label }) => (
+          // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link key={uniqid(label)} label={label} link={link} />
         ))}
     </div>
