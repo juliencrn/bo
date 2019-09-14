@@ -84,7 +84,7 @@ collections:
     files:
     - name: index
       label: Bengale Studio
-      file: conntent/pages/index.md
+      file: content/pages/index.md
       fields:
         - { name: title, label: Titre, widget: string }
         - { name: excerpt, label: Extrait, widget: text, hint: 'Utilisé pour le SEO' }
