@@ -16,7 +16,8 @@ export const colors = {
   white: `#fff`,
   pink: `#ff9ad6`,
   pinkLight: `#ffc0e5`,
-  darkBlue: `#111447`
+  darkBlue: `#111447`,
+  font: `#0b1227`
 }
 
 export const fonts = {
@@ -70,7 +71,8 @@ export const lineHeights = {
 const heading = {
   fontFamily: 'heading',
   lineHeight: 'heading',
-  fontWeight: 'heading'
+  fontWeight: 'heading',
+  color: 'font'
 }
 
 export const styles = {
@@ -79,7 +81,8 @@ export const styles = {
     lineHeight: 'body',
     fontWeight: 'body',
     fontSize: [1, 1, 2],
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    color: 'font'
   },
   h1: {
     ...heading,

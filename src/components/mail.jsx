@@ -13,7 +13,8 @@ const Mail = props => {
         color,
         fontSize: [5],
         fontFamily: 'heading',
-        fontWeight: 'heading'
+        fontWeight: 'heading',
+        textDecoration: 'none'
       }}
       {...props}
     >

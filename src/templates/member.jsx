@@ -50,7 +50,7 @@ export default function PostTemplate({ data }) {
 
   return (
     <Layout>
-      <Section bg={bgColor} color="white">
+      <Section bg={bgColor} color="white" fullScreen>
         <Container>
           <Flex sx={{ mx: -3, flexWrap: 'wrap' }}>
             <Col>

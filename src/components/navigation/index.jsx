@@ -86,13 +86,13 @@ Navigation.defaultProps = {
       data: {
         label: 'Action',
         childs: [
-          { label: 'Portfolio', to: '/' },
+          { label: 'Portfolio', to: '/portfolio' },
           { label: 'Tarifs', to: '/packs' }
         ]
       }
     },
     { type: 'item', data: { label: 'Vérité', to: '/membres' } },
-    { type: 'item', data: { label: 'Contact', to: '/' } }
+    { type: 'item', data: { label: 'Contact', to: '/contact' } }
   ],
   color: 'fushia'
 }

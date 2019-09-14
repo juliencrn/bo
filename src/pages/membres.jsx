@@ -34,7 +34,7 @@ const MembersPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="L'équipe" />
-      <Section bg="blue" color="white">
+      <Section bg="blue" color="white" fullScreen>
         <Container>
           <BigText />
           <AvatarList members={members} />

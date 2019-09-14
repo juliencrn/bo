@@ -1,5 +1,5 @@
 # source: http://localhost:8000/___graphql
-# timestamp: Thu Sep 12 2019 02:12:10 GMT+0200 (GMT+02:00)
+# timestamp: Sat Sep 14 2019 16:34:21 GMT+0200 (GMT+02:00)
 
 """Provides default value for input field."""
 directive @default(value: JSON!) on INPUT_FIELD_DEFINITION
@@ -896,23 +896,31 @@ enum FileFieldsEnum {
   childMdx___rawBody
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
+  childMdx___frontmatter___date
   childMdx___frontmatter___firstname
   childMdx___frontmatter___lastname
   childMdx___frontmatter___profession
   childMdx___frontmatter___professionCool
   childMdx___frontmatter___mail
   childMdx___frontmatter___avatar
+  childMdx___frontmatter___bgColor
+  childMdx___frontmatter___color
   childMdx___frontmatter___skills
   childMdx___frontmatter___skills___label
   childMdx___frontmatter___skills___link
   childMdx___frontmatter___socialLinks
   childMdx___frontmatter___socialLinks___label
   childMdx___frontmatter___socialLinks___link
-  childMdx___frontmatter___date
   childMdx___frontmatter___excerpt
   childMdx___frontmatter___numero
-  childMdx___frontmatter___bgColor
-  childMdx___frontmatter___color
+  childMdx___frontmatter___titles
+  childMdx___frontmatter___sections
+  childMdx___frontmatter___sections___content
+  childMdx___frontmatter___sections___theme
+  childMdx___frontmatter___sections___title
+  childMdx___frontmatter___ctaTitle
+  childMdx___frontmatter___devisBtn
+  childMdx___frontmatter___contactBtn
   childMdx___body
   childMdx___excerpt
   childMdx___headings
@@ -1544,23 +1552,31 @@ enum MdxFieldsEnum {
   rawBody
   fileAbsolutePath
   frontmatter___title
+  frontmatter___date
   frontmatter___firstname
   frontmatter___lastname
   frontmatter___profession
   frontmatter___professionCool
   frontmatter___mail
   frontmatter___avatar
+  frontmatter___bgColor
+  frontmatter___color
   frontmatter___skills
   frontmatter___skills___label
   frontmatter___skills___link
   frontmatter___socialLinks
   frontmatter___socialLinks___label
   frontmatter___socialLinks___link
-  frontmatter___date
   frontmatter___excerpt
   frontmatter___numero
-  frontmatter___bgColor
-  frontmatter___color
+  frontmatter___titles
+  frontmatter___sections
+  frontmatter___sections___content
+  frontmatter___sections___theme
+  frontmatter___sections___title
+  frontmatter___ctaTitle
+  frontmatter___devisBtn
+  frontmatter___contactBtn
   body
   excerpt
   headings
@@ -1687,14 +1703,6 @@ input MdxFilterInput {
 
 type MdxFrontmatter {
   title: String!
-  firstname: String
-  lastname: String
-  profession: String
-  professionCool: String
-  mail: String
-  avatar: String
-  skills: [MdxFrontmatterSkills]
-  socialLinks: [MdxFrontmatterSocialLinks]
   date(
     """
     Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
@@ -1716,27 +1724,61 @@ type MdxFrontmatter {
     """Configures the locale Moment.js will use to format the date."""
     locale: String
   ): Date
-  excerpt: String
-  numero: Int
+  firstname: String
+  lastname: String
+  profession: String
+  professionCool: String
+  mail: String
+  avatar: String
   bgColor: String
   color: String
+  skills: [MdxFrontmatterSkills]
+  socialLinks: [MdxFrontmatterSocialLinks]
+  excerpt: String
+  numero: Int
+  titles: [String]
+  sections: [MdxFrontmatterSections]
+  ctaTitle: String
+  devisBtn: String
+  contactBtn: String
 }
 
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
+  date: DateQueryOperatorInput
   firstname: StringQueryOperatorInput
   lastname: StringQueryOperatorInput
   profession: StringQueryOperatorInput
   professionCool: StringQueryOperatorInput
   mail: StringQueryOperatorInput
   avatar: StringQueryOperatorInput
-  skills: MdxFrontmatterSkillsFilterListInput
-  socialLinks: MdxFrontmatterSocialLinksFilterListInput
-  date: DateQueryOperatorInput
-  excerpt: StringQueryOperatorInput
-  numero: IntQueryOperatorInput
   bgColor: StringQueryOperatorInput
   color: StringQueryOperatorInput
+  skills: MdxFrontmatterSkillsFilterListInput
+  socialLinks: MdxFrontmatterSocialLinksFilterListInput
+  excerpt: StringQueryOperatorInput
+  numero: IntQueryOperatorInput
+  titles: StringQueryOperatorInput
+  sections: MdxFrontmatterSectionsFilterListInput
+  ctaTitle: StringQueryOperatorInput
+  devisBtn: StringQueryOperatorInput
+  contactBtn: StringQueryOperatorInput
+}
+
+type MdxFrontmatterSections {
+  content: String
+  theme: String
+  title: String
+}
+
+input MdxFrontmatterSectionsFilterInput {
+  content: StringQueryOperatorInput
+  theme: StringQueryOperatorInput
+  title: StringQueryOperatorInput
+}
+
+input MdxFrontmatterSectionsFilterListInput {
+  elemMatch: MdxFrontmatterSectionsFilterInput
 }
 
 type MdxFrontmatterSkills {
