@@ -50,17 +50,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: [
-            'Playfair+Display:400,700,900',
-            'Roboto:300,400,400i,500,700'
-          ]
-        }
-      }
-    },
-    {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
