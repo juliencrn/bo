@@ -19,7 +19,11 @@ const ItemDropdown = ({ label, childs, isXL }) => {
       <button
         type="button"
         css={buttonReset}
-        sx={{ display: 'inline-block', width: isXL ? 'auto' : '100%' }}
+        sx={{
+          display: 'inline-block',
+          width: isXL ? 'auto' : '100%',
+          height: `100%`
+        }}
         onClick={() => !isXL && setOpen(!open)}
       >
         <Item>{label}</Item>
