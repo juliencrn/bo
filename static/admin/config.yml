@@ -1,7 +1,7 @@
 # Netlify-cms config file
 backend:
-  name: test-repo     # Used for create fields
-#  name: github        # Used during development
+#  name: test-repo     # Used for create fields
+  name: github        # Used during development
 #  name: git-gateway   # Used for production
 
   branch: master
