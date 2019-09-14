@@ -1,7 +1,7 @@
 # Netlify-cms config file
 backend:
-#  name: test-repo     # Used for create fields
-  name: github        # Used during development
+  name: test-repo     # Used for create fields
+#  name: github        # Used during development
 #  name: git-gateway   # Used for production
 
   branch: master
@@ -78,3 +78,40 @@ collections:
         label: "Texte de présentation"
         widget: markdown
         hint: "N'utilisez pas les fonctions de mises en forme ici."
+  - name: pages
+    label: Pages
+    delete: false
+    files:
+    - name: index
+      label: Bengale Studio
+      file: conntent/pages/index.md
+      fields:
+        - { name: title, label: Titre, widget: string }
+        - { name: excerpt, label: Extrait, widget: text, hint: 'Utilisé pour le SEO' }
+        - name: titles
+          label: Titres qui changent
+          widget: list
+          default: ["Créateurs d'expériences Digitales"]
+          hint: "Spérarer les expressions par une virgule."
+        - name: sections
+          label: Sections
+          widget: list
+          fields:
+            - { name: title, label: Titre de section, widget: string }
+            - { name: content, label: Contenu, widget: markdown }
+            - name: theme
+              label: Thème
+              widget: select
+              options: ['rose', 'rouge', 'vert']
+        - name: ctaTitle
+          label: Titre CTA
+          widget: string
+          default: "Après, il n'y a plus qu'à..."
+        - name: devisBtn
+          label: Label du bouton devis
+          widget: string
+          default: 'Demander un devis'
+        - name: contactBtn
+          label: Label du bouton contact
+          widget: string
+          default: 'Dire bonjour'
