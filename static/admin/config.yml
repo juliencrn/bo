@@ -98,20 +98,8 @@ collections:
           widget: list
           fields:
             - { name: title, label: Titre de section, widget: string }
+            - { name: theme, label: Thème, widget: select, options: ['rose', 'rouge', 'vert'] }
             - { name: content, label: Contenu, widget: markdown }
-            - name: theme
-              label: Thème
-              widget: select
-              options: ['rose', 'rouge', 'vert']
-        - name: ctaTitle
-          label: Titre CTA
-          widget: string
-          default: "Après, il n'y a plus qu'à..."
-        - name: devisBtn
-          label: Label du bouton devis
-          widget: string
-          default: 'Demander un devis'
-        - name: contactBtn
-          label: Label du bouton contact
-          widget: string
-          default: 'Dire bonjour'
+        - { name: ctaTitle, label: Titre CTA, widget: string }
+        - { name: devisBtn, label: Label du bouton devis, widget: string }
+        - { name: contactBtn, label: Label du bouton contact, widget: string }
