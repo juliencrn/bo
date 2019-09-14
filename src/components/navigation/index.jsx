@@ -94,7 +94,7 @@ Navigation.defaultProps = {
     { type: 'item', data: { label: 'Vérité', to: '/membres' } },
     { type: 'item', data: { label: 'Contact', to: '/' } }
   ],
-  color: 'red'
+  color: 'fushia'
 }
 
 export default Navigation

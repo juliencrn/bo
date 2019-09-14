@@ -30,7 +30,7 @@ Layout.propTypes = {
 }
 
 Layout.defaultProps = {
-  menuColor: 'red'
+  menuColor: 'fushia'
 }
 
 export default Layout

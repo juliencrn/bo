@@ -5,7 +5,7 @@ import { jsx } from 'theme-ui'
 // import PropTypes from 'prop-types'
 
 import Section from '../components/section'
-
+import Neon from '../components/neon'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Container from '../components/container'
@@ -32,17 +32,7 @@ const IndexPage = () => {
       <SEO title="Home" />
       <Section bg="marine">
         <Container>
-          <h1
-            sx={{
-              color: 'red',
-              fontSize: [5, 5, 6],
-              textAlign: 'center',
-              fontFamily: 'makina',
-              pb: 4
-            }}
-          >
-            Bengale Studio
-          </h1>
+          <Neon text="Bengale Studio" />
         </Container>
       </Section>
     </Layout>
