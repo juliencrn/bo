@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { Box, Flex } from 'rebass'
 
 import Item from './menuItem'
-import ButtonReset from '../buttonReset'
+import ButtonReset from '../../buttonReset'
 
 const ItemDropdown = ({ label, childs, isXL }) => {
   const [open, setOpen] = useState(!isXL)

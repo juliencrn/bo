@@ -5,8 +5,8 @@ import { Box } from 'rebass'
 import { jsx } from 'theme-ui'
 import { useTransition, animated } from 'react-spring'
 
-import Burger from './burger'
-import Menu from './menu'
+import Burger from './components/burger'
+import Menu from './components/menu'
 
 function MenuDesktop({
   setOpen,

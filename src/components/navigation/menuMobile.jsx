@@ -5,9 +5,9 @@ import { Box, Flex } from 'rebass'
 import { jsx } from 'theme-ui'
 import { useTransition, animated } from 'react-spring'
 
-import Burger from './burger'
-import Menu from './menu'
-import Item, { HomeLink } from './menuItem'
+import Burger from './components/burger'
+import Menu from './components/menu'
+import Item, { HomeLink } from './components/menuItem'
 import ButtonReset from '../buttonReset'
 
 function MenuMobile({

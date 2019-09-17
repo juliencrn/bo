@@ -5,7 +5,7 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Item from './menuItem'
-import ButtonReset from '../buttonReset'
+import ButtonReset from '../../buttonReset'
 
 const Burger = ({ setOpen, label, isXL }) => {
   return (

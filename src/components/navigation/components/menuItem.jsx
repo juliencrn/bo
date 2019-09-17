@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
-import { childrenPT } from '../../utils/propTypes'
+import { childrenPT } from '../../../utils/propTypes'
 
 const Item = ({ link, children }) => {
   const style = {
