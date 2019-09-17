@@ -58,6 +58,5 @@ ItemDropdown.propTypes = {
   ).isRequired,
   isXL: PropTypes.bool.isRequired
 }
-ItemDropdown.defaultProps = {}
 
 export default ItemDropdown

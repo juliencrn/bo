@@ -1,5 +1,5 @@
 # source: http://localhost:8000/___graphql
-# timestamp: Sat Sep 14 2019 16:34:21 GMT+0200 (GMT+02:00)
+# timestamp: Tue Sep 17 2019 14:32:16 GMT+0200 (GMT+02:00)
 
 """Provides default value for input field."""
 directive @default(value: JSON!) on INPUT_FIELD_DEFINITION
@@ -896,7 +896,6 @@ enum FileFieldsEnum {
   childMdx___rawBody
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
-  childMdx___frontmatter___date
   childMdx___frontmatter___firstname
   childMdx___frontmatter___lastname
   childMdx___frontmatter___profession
@@ -1552,7 +1551,6 @@ enum MdxFieldsEnum {
   rawBody
   fileAbsolutePath
   frontmatter___title
-  frontmatter___date
   frontmatter___firstname
   frontmatter___lastname
   frontmatter___profession
@@ -1703,27 +1701,6 @@ input MdxFilterInput {
 
 type MdxFrontmatter {
   title: String!
-  date(
-    """
-    Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY
-    MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for
-    documentation for different tokens.
-    """
-    formatString: String
-
-    """Returns a string generated with Moment.js' `fromNow` function"""
-    fromNow: Boolean
-
-    """
-    Returns the difference between this date and the current time. Defaults to
-    "milliseconds" but you can also pass in as the measurement "years",
-    "months", "weeks", "days", "hours", "minutes", and "seconds".
-    """
-    difference: String
-
-    """Configures the locale Moment.js will use to format the date."""
-    locale: String
-  ): Date
   firstname: String
   lastname: String
   profession: String
@@ -1745,7 +1722,6 @@ type MdxFrontmatter {
 
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
-  date: DateQueryOperatorInput
   firstname: StringQueryOperatorInput
   lastname: StringQueryOperatorInput
   profession: StringQueryOperatorInput
@@ -2051,6 +2027,8 @@ enum SiteFieldsEnum {
   internal___owner
   internal___type
   siteMetadata___title
+  siteMetadata___shortTitle
+  siteMetadata___mail
   siteMetadata___description
   siteMetadata___author
   port
@@ -2269,7 +2247,6 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___ignore
-  pluginCreator___pluginOptions___google___families
   pluginCreator___pluginOptions___extensions
   pluginCreator___pluginOptions___gatsbyRemarkPlugins
   pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve
@@ -2480,7 +2457,6 @@ enum SitePluginFieldsEnum {
   pluginOptions___name
   pluginOptions___path
   pluginOptions___ignore
-  pluginOptions___google___families
   pluginOptions___extensions
   pluginOptions___gatsbyRemarkPlugins
   pluginOptions___gatsbyRemarkPlugins___resolve
@@ -2633,7 +2609,6 @@ type SitePluginPluginOptions {
   name: String
   path: String
   ignore: [String]
-  google: SitePluginPluginOptionsGoogle
   extensions: [String]
   gatsbyRemarkPlugins: [SitePluginPluginOptionsGatsbyRemarkPlugins]
   maxWidth: Int
@@ -2660,7 +2635,6 @@ input SitePluginPluginOptionsFilterInput {
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   ignore: StringQueryOperatorInput
-  google: SitePluginPluginOptionsGoogleFilterInput
   extensions: StringQueryOperatorInput
   gatsbyRemarkPlugins: SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput
   maxWidth: IntQueryOperatorInput
@@ -2726,14 +2700,6 @@ input SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput {
   rel: StringQueryOperatorInput
 }
 
-type SitePluginPluginOptionsGoogle {
-  families: [String]
-}
-
-input SitePluginPluginOptionsGoogleFilterInput {
-  families: StringQueryOperatorInput
-}
-
 type SitePluginPluginOptionsPlugins {
   resolve: String
   id: String
@@ -2781,12 +2747,16 @@ input SitePluginSortInput {
 
 type SiteSiteMetadata {
   title: String
+  shortTitle: String
+  mail: String
   description: String
   author: String
 }
 
 input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
+  shortTitle: StringQueryOperatorInput
+  mail: StringQueryOperatorInput
   description: StringQueryOperatorInput
   author: StringQueryOperatorInput
 }

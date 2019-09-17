@@ -23,11 +23,7 @@ const Burger = ({ setOpen, label, isXL }) => {
 Burger.propTypes = {
   setOpen: PropTypes.func.isRequired,
   isXL: PropTypes.bool.isRequired,
-  label: PropTypes.string
-}
-
-Burger.defaultProps = {
-  label: 'BO'
+  label: PropTypes.string.isRequired
 }
 
 export default Burger

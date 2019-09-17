@@ -13,9 +13,12 @@ import Section from '../components/section'
 import Container from '../components/container'
 
 const MembersPage = ({ data }) => {
+  const { members: baseMembers, images, site } = data
+  const { title: siteName } = site.siteMetadata
+
   // Merge images into members list
-  const members = data.members.edges.map(({ node }) => {
-    const image = data.images.nodes.filter(({ absolutePath }) => {
+  const members = baseMembers.edges.map(({ node }) => {
+    const image = images.nodes.filter(({ absolutePath }) => {
       const stringToArr = absolutePath.split('/')
       const rest = stringToArr.splice(stringToArr.length - 2, 2)
       const filename = `/${rest.join('/')}`
@@ -37,7 +40,7 @@ const MembersPage = ({ data }) => {
       <Section bg="blue" color="white" fullScreen>
         <Container>
           <BigText />
-          <AvatarList members={members} />
+          <AvatarList members={members} siteName={siteName} />
         </Container>
       </Section>
     </Layout>
@@ -51,6 +54,11 @@ MembersPage.propTypes = {
     }),
     members: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object)
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string
+      })
     })
   })
 }
@@ -62,6 +70,11 @@ MembersPage.defaultProps = {
     },
     members: {
       edges: []
+    },
+    site: {
+      siteMetadata: {
+        title: 'Bengale Studio'
+      }
     }
   }
 }
@@ -108,6 +121,11 @@ export const query = graphql`
             ...GatsbyImageSharpFixed
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

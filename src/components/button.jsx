@@ -10,8 +10,8 @@ const Button = props => (
     sx={{
       textTransform: 'uppercase',
       borderRadius: 0,
-      py: 4,
-      px: 4,
+      py: [3, 3, 4],
+      px: [3, 3, 4],
       fontSize: 3
     }}
   />

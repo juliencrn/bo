@@ -22,6 +22,7 @@ const IndexPage = ({ data }) => {
     devisBtn,
     contactBtn
   } = data.mdx.frontmatter
+  const { mail } = data.site.siteMetadata
   return (
     <Layout>
       <SEO title="Home" description={excerpt} />
@@ -32,7 +33,7 @@ const IndexPage = ({ data }) => {
         contactBtn={contactBtn}
         devisBtn={devisBtn}
       />
-      <HomeFooter title={title} mail="bonjour@bengale.studio" />
+      <HomeFooter title={title} mail={mail} />
     </Layout>
   )
 }
@@ -55,12 +56,20 @@ IndexPage.propTypes = {
         devisBtn: PropTypes.string.isRequired,
         contactBtn: PropTypes.string.isRequired
       })
+    }),
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        mail: PropTypes.string.isRequired
+      })
     })
   })
 }
 
 IndexPage.defaultProps = {
-  data: { mdx: { frontmatter: {} } }
+  data: {
+    mdx: { frontmatter: {} },
+    site: { siteMetadata: { mail: 'bonjour@bengale.studio' } }
+  }
 }
 
 export default IndexPage
@@ -81,6 +90,11 @@ export const query = graphql`
         ctaTitle
         devisBtn
         contactBtn
+      }
+    }
+    site {
+      siteMetadata {
+        mail
       }
     }
   }

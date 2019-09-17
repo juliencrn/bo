@@ -9,7 +9,7 @@ import { Flex } from 'rebass'
 import Item, { HomeLink } from './menuItem'
 import ItemDropdown from './menuItemDropdown'
 
-const Menu = ({ list, isXL }) => {
+const Menu = ({ list, isXL, siteName }) => {
   return (
     <Flex
       as="nav"
@@ -18,7 +18,7 @@ const Menu = ({ list, isXL }) => {
         width: `100%`
       }}
     >
-      {isXL && <HomeLink />}
+      {isXL && <HomeLink label={siteName} />}
       {list.map(({ type, data }, i) =>
         type === 'item' ? (
           <Item key={uniqid(i)} link={data.to}>
@@ -34,7 +34,8 @@ const Menu = ({ list, isXL }) => {
 
 Menu.propTypes = {
   isXL: PropTypes.bool.isRequired,
-  list: PropTypes.arrayOf(PropTypes.object).isRequired
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  siteName: PropTypes.string.isRequired
 }
 
 export default Menu

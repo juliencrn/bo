@@ -24,13 +24,13 @@ function HomeCTA({ ctaTitle, devisBtn, contactBtn }) {
         >
           {ctaTitle}
         </Heading>
-        <Flex sx={{ justifyContent: 'space-around' }}>
-          <Box>
+        <Flex sx={{ justifyContent: 'space-around', flexWrap: 'wrap' }}>
+          <Box p={2}>
             <Button as={Link} variant="blue" to="/devis">
               {devisBtn}
             </Button>
           </Box>
-          <Box>
+          <Box p={2}>
             <Button as={Link} variant="red" to="/contact">
               {contactBtn}
             </Button>

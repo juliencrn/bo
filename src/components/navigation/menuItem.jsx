@@ -33,10 +33,12 @@ Item.defaultProps = {
   link: ''
 }
 
-export const HomeLink = () => (
+export const HomeLink = ({ label }) => (
   <Item link="/">
-    <span sx={{ fontFamily: 'makina' }}>Bengale Studio</span>
+    <span sx={{ fontFamily: 'makina' }}>{label}</span>
   </Item>
 )
+
+HomeLink.propTypes = { label: PropTypes.string.isRequired }
 
 export default Item

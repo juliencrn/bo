@@ -5,9 +5,8 @@ import { jsx, Styled } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Avatar from './avatar'
-import SiteName from '../../../utils/sitename'
 
-const AvatarList = ({ members }) => {
+const AvatarList = ({ members, siteName }) => {
   return (
     <>
       <Styled.h2
@@ -17,7 +16,7 @@ const AvatarList = ({ members }) => {
           textAlign: 'center'
         }}
       >
-        <SiteName />
+        {siteName}
       </Styled.h2>
       {members.map(({ id, ...rest }) => (
         <Avatar key={id} {...rest} />
@@ -32,7 +31,8 @@ AvatarList.propTypes = {
       id: PropTypes.string.isRequired,
       frontmatter: PropTypes.object
     })
-  ).isRequired
+  ).isRequired,
+  siteName: PropTypes.string.isRequired
 }
 
 export default AvatarList

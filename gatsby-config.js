@@ -4,6 +4,8 @@ const siteDescription =
 module.exports = {
   siteMetadata: {
     title: 'Bengale Studio',
+    shortTitle: 'BO',
+    mail: 'bonjour@bengale.studio',
     description: siteDescription,
     author: `@Junscuzzy`
   },

@@ -12,7 +12,12 @@ import Section from '../components/section'
 
 function HomeHeader({ title, titles }) {
   return (
-    <Section bg="marine" color="green" fullScreen>
+    <Section
+      bg="marine"
+      color="green"
+      fullScreen
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+    >
       <Container>
         <Neon text={title} />
         {titles && titles.map(t => <Heading key={uniqid(t)}>{t}</Heading>)}

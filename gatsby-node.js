@@ -10,10 +10,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-const createPosts = require('./gatsby/createPosts')
 const createMembers = require('./gatsby/createMembers')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  await createPosts({ graphql, actions, reporter })
   await createMembers({ graphql, actions, reporter })
 }

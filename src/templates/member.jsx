@@ -3,7 +3,8 @@
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Flex, Box, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
+import { Box, Flex, Heading } from 'rebass'
 
 import Layout from '../components/layout'
 import Container from '../components/container'
@@ -54,9 +55,13 @@ export default function PostTemplate({ data }) {
         <Container>
           <Flex sx={{ mx: -3, flexWrap: 'wrap' }}>
             <Col>
-              <h2
-                sx={{ textTransform: 'uppercase', fontWeight: 'body' }}
-              >{`${firstname} ${lastname}`}</h2>
+              <Heading
+                sx={{
+                  textTransform: 'uppercase',
+                  fontWeight: 'body',
+                  fontFamily: 'body'
+                }}
+              >{`${firstname} ${lastname}`}</Heading>
               <LinkList list={[{ label: profession, link: '' }, ...skills]} />
             </Col>
             <Col>
@@ -82,7 +87,6 @@ PostTemplate.propTypes = {
     getMembers: PropTypes.shape({
       body: PropTypes.string.isRequired,
       frontmatter: PropTypes.shape({
-        avatar: PropTypes.object,
         firstname: PropTypes.string,
         lastname: PropTypes.string,
         mail: PropTypes.string,
@@ -112,7 +116,6 @@ export const pageQuery = graphql`
     getMembers: mdx(id: { eq: $id }) {
       body
       frontmatter {
-        avatar
         title
         firstname
         lastname
