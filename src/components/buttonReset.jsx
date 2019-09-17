@@ -31,7 +31,12 @@ const buttonReset = css`
 `
 
 const ButtonReset = props => (
-  <Box as="button" type="button" sx={buttonReset} {...props} />
+  <Box
+    as="button"
+    type="button"
+    sx={{ ...buttonReset, cursor: 'pointer' }}
+    {...props}
+  />
 )
 
 export default ButtonReset

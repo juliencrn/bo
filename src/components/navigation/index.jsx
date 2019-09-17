@@ -5,12 +5,10 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
-import { Box, Flex } from 'rebass'
+import { Box } from 'rebass'
 
-import Burger from './burger'
-import Menu from './menu'
-import Item, { HomeLink } from './menuItem'
-import ButtonReset from '../buttonReset'
+import MenuDesktop from './menuDesktop'
+import MenuMobile from './menuMobile'
 import { breakpoints } from '../../gatsby-plugin-theme-ui'
 
 const Navigation = ({ color, list }) => {
@@ -28,64 +26,29 @@ const Navigation = ({ color, list }) => {
     `
   )
   const { title: siteName, shortTitle } = site.siteMetadata
+  const style = {
+    position: 'fixed',
+    width: 'auto',
+    height: 'auto',
+    top: 0,
+    right: 0,
+    zIndex: 50
+  }
+  const margins = { m: [4, 4, 5] }
+  const props = { margins, style, open, shortTitle, list, siteName }
+
   return (
-    <MediaQuery minWidth={breakpoints[0]}>
-      {isXL => (
-        <Box
-          sx={{
-            color,
-            fontFamily: 'body',
-            position: 'fixed',
-            width: 'auto',
-            height: 'auto',
-            top: 0,
-            right: 0,
-            zIndex: 50,
-            m: [4, 4, 5]
-          }}
-          onMouseLeave={() => isXL && setOpen(false)}
-        >
-          {!open && (
-            <Burger
-              setOpen={() => setOpen(true)}
-              label={shortTitle}
-              isXL={isXL}
-            />
-          )}
-
-          {open && (
-            <Flex
-              sx={
-                !isXL && {
-                  p: 4,
-                  width: `100%`,
-                  height: `auto`,
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  flexDirection: 'column',
-                  overflow: 'auto',
-                  backgroundColor: 'marine'
-                }
-              }
-            >
-              {!isXL && open && (
-                <Flex sx={{ justifyContent: 'space-between', mb: 4 }}>
-                  <HomeLink label={siteName} />
-                  <ButtonReset onClick={() => setOpen(false)}>
-                    <Item>X</Item>
-                  </ButtonReset>
-                </Flex>
-              )}
-
-              {open && <Menu list={list} isXL={isXL} siteName={siteName} />}
-            </Flex>
-          )}
-        </Box>
-      )}
-    </MediaQuery>
+    <Box sx={{ color, fontFamily: 'body' }}>
+      <MediaQuery minWidth={breakpoints[0]}>
+        {isXL =>
+          isXL ? (
+            <MenuDesktop setOpen={x => setOpen(x)} {...props} />
+          ) : (
+            <MenuMobile setOpen={x => setOpen(x)} {...props} />
+          )
+        }
+      </MediaQuery>
+    </Box>
   )
 }
 
