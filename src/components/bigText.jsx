@@ -3,6 +3,7 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { Text } from 'rebass'
 
 const lorem =
   'Aenean eu porta est, vel faucibus tellus. Vestibulum in arcu ultrices, semper velit vel, tempor augue. Nulla vulputate tempus arcu sed mattis. Duis sed tristique magna. Donec accumsan nisi non quam interdum, sit amet dignissim nibh euismod. Duis eu auctor turpis, ac commodo turpis. Mauris non aliquet enim. Sed aliquet neque eget tortor luctus pulvinar. Cras et metus enim. In a erat et odio consectetur ullamcorper a Bengale Studio. Curabitur nec ornare purus. In eget augue in neque dignissim varius sed non ligula.\n' +
@@ -11,7 +12,7 @@ const lorem =
 const BigText = props => {
   const { text } = props
   return (
-    <p
+    <Text
       sx={{
         fontFamily: 'heading',
         fontSize: [6],
@@ -22,7 +23,7 @@ const BigText = props => {
       {...props}
     >
       {text}
-    </p>
+    </Text>
   )
 }
 

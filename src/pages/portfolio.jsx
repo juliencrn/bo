@@ -1,7 +1,8 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { jsx, Flex, Styled } from 'theme-ui'
+import { jsx } from 'theme-ui'
+import { Heading } from 'rebass'
 
 import Section from '../components/section'
 import Layout from '../components/layout'
@@ -14,16 +15,14 @@ const PortfolioPage = () => {
       <SEO title="Portfolio" />
       <Section fullScreen bg="marine" color="green">
         <Container>
-          <h1
+          <Heading
             sx={{
               textAlign: 'center',
-              fontWeight: 'heading',
-              fontFamily: 'heading',
               fontSize: [6]
             }}
           >
             Portfolio
-          </h1>
+          </Heading>
         </Container>
       </Section>
     </Layout>

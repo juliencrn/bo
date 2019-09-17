@@ -2,21 +2,22 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
 import Img from 'gatsby-image'
-import { jsx, Flex } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import { Box, Flex } from 'rebass'
 
 import IconMore from '../../../../static/svg/plus-sign-to-add.svg'
 import Text from './text'
 
-const Avatar = ({ id, frontmatter, fields }) => {
+const Avatar = ({ frontmatter, fields }) => {
   const [alignLeft, setAlign] = useState(false)
   const [hover, setHover] = useState(false)
   const { avatar, title, profession, professionCool, bgColor } = frontmatter
   const { slug } = fields
   return (
-    <a
-      href={slug}
-      key={id}
+    <Link
+      to={slug}
       sx={{
         display: 'flex',
         flexDirection: alignLeft ? 'row' : 'row-reverse',
@@ -48,7 +49,7 @@ const Avatar = ({ id, frontmatter, fields }) => {
         <Text text={professionCool} uppercase />
       </Flex>
 
-      <div
+      <Box
         sx={{
           width: ['145px'],
           height: ['145px'],
@@ -74,13 +75,12 @@ const Avatar = ({ id, frontmatter, fields }) => {
             opacity: hover ? '1' : '0'
           }}
         />
-      </div>
-    </a>
+      </Box>
+    </Link>
   )
 }
 
 Avatar.propTypes = {
-  id: PropTypes.string.isRequired,
   frontmatter: PropTypes.shape({
     avatar: PropTypes.object,
     title: PropTypes.string,

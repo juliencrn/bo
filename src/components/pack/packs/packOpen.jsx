@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import PackTitle from '../packTitle'
+import Button from '../../button'
 
 const PackOpen = ({ matches, frontmatter, body }) => {
   const cols = [4 / 12, 5 / 12, 3 / 12].map(el => `${el * 100}%`)
@@ -45,7 +46,7 @@ const PackOpen = ({ matches, frontmatter, body }) => {
           justifyContent: 'center'
         }}
       >
-        <button>Bouton</button>
+        <Button>Bouton</Button>
       </Flex>
     </Flex>
   )

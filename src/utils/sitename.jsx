@@ -1,4 +1,3 @@
-import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 export default function SiteName() {
@@ -14,5 +13,5 @@ export default function SiteName() {
     `
   )
   const { title } = site.siteMetadata
-  return <span>{title}</span>
+  return title
 }

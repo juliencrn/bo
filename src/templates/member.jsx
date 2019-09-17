@@ -10,7 +10,7 @@ import Container from '../components/container'
 import Mail from '../components/mail'
 import BigText from '../components/bigText'
 import Section from '../components/section'
-import LinkList from '../components/linkList'
+import LinkList from '../components/members/linkList'
 import { childrenPT } from '../utils/propTypes'
 
 const Col = ({ children }) => (

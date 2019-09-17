@@ -3,29 +3,18 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
-
-import { lineHeights } from '../../../gatsby-plugin-theme-ui'
+import { Text as BaseText } from 'rebass'
 
 const Text = ({ text, uppercase, line, ...rest }) => {
   const style = {
     m: 0,
-    textTransform: uppercase ? 'uppercase' : 'none',
-    lineHeight: lineHeights.body,
-    fontSize: [1]
-  }
-
-  if (line) {
-    return (
-      <del sx={style} {...rest}>
-        {text}
-      </del>
-    )
+    textTransform: uppercase ? 'uppercase' : 'none'
   }
 
   return (
-    <p sx={style} {...rest}>
+    <BaseText as={line && `del`} sx={style} {...rest}>
       {text}
-    </p>
+    </BaseText>
   )
 }
 

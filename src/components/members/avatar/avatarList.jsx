@@ -5,7 +5,7 @@ import { jsx, Styled } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Avatar from './avatar'
-import SiteName from '../../sitename'
+import SiteName from '../../../utils/sitename'
 
 const AvatarList = ({ members }) => {
   return (

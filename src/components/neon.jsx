@@ -5,6 +5,7 @@ import { jsx } from 'theme-ui'
 import { keyframes } from '@emotion/core'
 import { animated, useSpring } from 'react-spring'
 import PropTypes from 'prop-types'
+import { Heading } from 'rebass'
 
 const roughEase = {
   range: [
@@ -70,19 +71,18 @@ const Neon = ({ text }) => {
         textShadow: `0 5px 20px`
       }}
     >
-      <h1
+      <Heading
         sx={{
           fontSize: [5, 6, 7],
           textAlign: 'center',
           fontFamily: 'makina',
-          fontWeight: 'heading',
           lineHeight: 'copy',
           letterSpacing: '8px',
           animation: `${blink} linear infinite 3s`
         }}
       >
         {text}
-      </h1>
+      </Heading>
     </animated.div>
   )
 }

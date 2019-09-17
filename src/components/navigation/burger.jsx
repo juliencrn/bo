@@ -5,20 +5,18 @@ import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 
 import Item from './menuItem'
-import { buttonReset } from '../../utils/cssHelpers'
+import ButtonReset from '../buttonReset'
 
 const Burger = ({ setOpen, label, isXL }) => {
   return (
-    <button
-      type="button"
+    <ButtonReset
       onMouseEnter={() => isXL && setOpen()}
       onClick={() => !isXL && setOpen()}
-      sx={buttonReset}
     >
       <Item>
         <span sx={{ fontFamily: 'makina' }}>{label}</span>
       </Item>
-    </button>
+    </ButtonReset>
   )
 }
 

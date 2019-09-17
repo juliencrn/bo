@@ -1,15 +1,16 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
-import { Flex, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import MediaQuery from 'react-responsive'
+import { Box, Flex } from 'rebass'
 
 import Burger from './burger'
 import Menu from './menu'
 import Item, { HomeLink } from './menuItem'
+import ButtonReset from '../buttonReset'
 import { breakpoints } from '../../gatsby-plugin-theme-ui'
-import { buttonReset } from '../../utils/cssHelpers'
 
 const Navigation = ({ color, list }) => {
   const [open, setOpen] = useState(false)
@@ -17,7 +18,7 @@ const Navigation = ({ color, list }) => {
     <MediaQuery minWidth={breakpoints[0]}>
       {isXL => (
         <>
-          <div
+          <Box
             sx={{
               color,
               fontFamily: 'body',
@@ -54,20 +55,16 @@ const Navigation = ({ color, list }) => {
                 {!isXL && open && (
                   <Flex sx={{ justifyContent: 'space-between', mb: 4 }}>
                     <HomeLink />
-                    <button
-                      sx={buttonReset}
-                      type="button"
-                      onClick={() => setOpen(false)}
-                    >
+                    <ButtonReset onClick={() => setOpen(false)}>
                       <Item>X</Item>
-                    </button>
+                    </ButtonReset>
                   </Flex>
                 )}
 
                 {open && <Menu list={list} isXL={isXL} />}
               </Flex>
             )}
-          </div>
+          </Box>
         </>
       )}
     </MediaQuery>

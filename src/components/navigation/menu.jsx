@@ -1,9 +1,10 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { jsx, Flex } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import uniqid from 'uniqid'
+import { Flex } from 'rebass'
 
 import Item, { HomeLink } from './menuItem'
 import ItemDropdown from './menuItemDropdown'

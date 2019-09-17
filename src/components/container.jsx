@@ -2,9 +2,10 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { jsx } from 'theme-ui'
+import { Box } from 'rebass'
 
 const Container = props => (
-  <div
+  <Box
     sx={{
       maxWidth: 'medium',
       width: ['90%'],

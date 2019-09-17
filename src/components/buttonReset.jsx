@@ -1,7 +1,11 @@
+/** @jsx jsx */
+// eslint-disable-next-line no-unused-vars
+import React from 'react'
+import { jsx } from 'theme-ui'
 import { css } from '@emotion/core'
+import { Box } from 'rebass'
 
-// eslint-disable-next-line import/prefer-default-export
-export const buttonReset = css`
+const buttonReset = css`
   border: none;
   margin: 0;
   padding: 0;
@@ -25,3 +29,9 @@ export const buttonReset = css`
   /* Corrects inability to style clickable \`input\` types in iOS */
   -webkit-appearance: none;
 `
+
+const ButtonReset = props => (
+  <Box as="button" type="button" sx={buttonReset} {...props} />
+)
+
+export default ButtonReset

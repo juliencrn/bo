@@ -1,12 +1,13 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
-import { Flex, Box, jsx } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
+import { Box, Flex } from 'rebass'
 
 import Item from './menuItem'
-import { buttonReset } from '../../utils/cssHelpers'
+import ButtonReset from '../buttonReset'
 
 const ItemDropdown = ({ label, childs, isXL }) => {
   const [open, setOpen] = useState(!isXL)
@@ -16,9 +17,7 @@ const ItemDropdown = ({ label, childs, isXL }) => {
       onMouseLeave={() => isXL && setOpen(false)}
       onMouseEnter={() => isXL && setOpen(true)}
     >
-      <button
-        type="button"
-        css={buttonReset}
+      <ButtonReset
         sx={{
           display: 'inline-block',
           width: isXL ? 'auto' : '100%',
@@ -27,7 +26,7 @@ const ItemDropdown = ({ label, childs, isXL }) => {
         onClick={() => !isXL && setOpen(!open)}
       >
         <Item>{label}</Item>
-      </button>
+      </ButtonReset>
       {open && (
         <Box
           sx={{

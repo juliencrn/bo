@@ -3,11 +3,12 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { Box } from 'rebass'
 
 const Section = props => {
   const { bg, color, fullScreen } = props
   return (
-    <div
+    <Box
       sx={{
         backgroundColor: bg,
         color,

@@ -4,30 +4,25 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import uniqid from 'uniqid'
+import { Text, Link as BaseLink, Box } from 'rebass'
 
 const Link = props => {
   const { link, label } = props
   return (
-    <p
-      sx={{
-        // fontSize: [5],
-        fontFamily: 'body',
-        fontWeight: 'body'
-      }}
-    >
+    <Text sx={{ my: 3 }}>
       {link ? (
-        <a
+        <BaseLink
           href={link}
           target="_blank"
           rel="noopener noreferrer"
           sx={{ color: 'inherit', textDecoration: 'none' }}
         >
           {label}
-        </a>
+        </BaseLink>
       ) : (
         label
       )}
-    </p>
+    </Text>
   )
 }
 
@@ -43,13 +38,13 @@ Link.defaultProps = {
 const LinkList = props => {
   const { list } = props
   return (
-    <div sx={{ color: 'white' }}>
+    <Box sx={{ color: 'white' }}>
       {list &&
         list.map(({ link, label }) => (
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link key={uniqid(label)} label={label} link={link} />
         ))}
-    </div>
+    </Box>
   )
 }
 
