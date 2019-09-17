@@ -58,7 +58,7 @@ export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 96]
 export const fontWeights = {
   body: 400,
   heading: 700,
-  bold: 700
+  bold: 900
 }
 
 export const lineHeights = {
@@ -68,7 +68,7 @@ export const lineHeights = {
 }
 
 // Shortcut
-const heading = {
+export const heading = {
   fontFamily: 'heading',
   lineHeight: 'heading',
   fontWeight: 'heading',

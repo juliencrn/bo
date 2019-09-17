@@ -1,23 +1,65 @@
+/**
+ * Kohne Makina Regular
+ */
 @font-face {
     font-family: 'Kohne Makina Regular';
-    src:
-            url('../../static/fonts/kohne-makina/kohne-makina.ttf') format("truetype"),
-            url('../../static/fonts/kohne-makina/kohne-makina-large.ttf') format("truetype");
+    src: url('../../static/fonts/kohne-makina/kohne-makina.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Kohne Makina Regular';
+    src: url('../../static/fonts/kohne-makina/kohne-makina-large.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 900;
+}
+
+/**
+ * Playfair Display
+ */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../../static/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: 'Playfair Display';
-    src:
-            url('../../static/fonts/Playfair_Display/PlayfairDisplay-Black.ttf') format("truetype"),
-            url('../../static/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf') format("truetype"),
-            url('../../static/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format("truetype");
+    src: url('../../static/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../../static/fonts/Playfair_Display/PlayfairDisplay-Black.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 900;
+}
+
+/**
+ * Roboto
+ */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../static/fonts/Roboto/Roboto-Regular.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: 'Roboto';
-    src:
-            url('../../static/fonts/Roboto/Roboto-Bold.ttf') format("truetype"),
-            url('../../static/fonts/Roboto/Roboto-Light.ttf') format("truetype"),
-            url('../../static/fonts/Roboto/Roboto-Regular.ttf') format("truetype"),
-            url('../../static/fonts/Roboto/Roboto-RegularItalic.ttf') format("truetype");
+    src: url('../../static/fonts/Roboto/Roboto-RegularItalic.ttf') format("truetype");
+    font-style: italic;
+    font-weight: 400;
 }
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../static/fonts/Roboto/Roboto-Bold.ttf') format("truetype");
+    font-style: normal;
+    font-weight: 700;
+}
+

@@ -3,11 +3,12 @@
 import React from 'react'
 import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { Link } from 'rebass'
 
 const Mail = props => {
   const { mail, color } = props
   return (
-    <a
+    <Link
       href={`mailto:${mail}`}
       sx={{
         color,
@@ -19,7 +20,7 @@ const Mail = props => {
       {...props}
     >
       {mail}
-    </a>
+    </Link>
   )
 }
 
