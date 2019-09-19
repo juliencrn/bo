@@ -11,7 +11,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 const createMembers = require('./gatsby/createMembers')
+const createPacks = require('./gatsby/createPacks')
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createMembers({ graphql, actions, reporter })
+  await createPacks({ graphql, actions, reporter })
 }

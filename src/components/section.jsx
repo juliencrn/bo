@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { Box } from 'rebass'
 
 const Section = props => {
-  const { bg, color, fullScreen } = props
+  const { bg, color, fullScreen, padding } = props
   return (
     <Box
       sx={{
@@ -15,7 +15,7 @@ const Section = props => {
         minHeight: fullScreen ? '100vh' : 'inherit',
         height: 'auto',
         width: '100%',
-        py: [5, 5, 6]
+        py: padding ? [5, 5, 6] : 'inherit'
       }}
       {...props}
     />
@@ -25,13 +25,15 @@ const Section = props => {
 Section.propTypes = {
   bg: PropTypes.string,
   color: PropTypes.string,
-  fullScreen: PropTypes.bool
+  fullScreen: PropTypes.bool,
+  padding: PropTypes.bool
 }
 
 Section.defaultProps = {
   bg: 'background',
   color: 'font',
-  fullScreen: false
+  fullScreen: false,
+  padding: true
 }
 
 export default Section
