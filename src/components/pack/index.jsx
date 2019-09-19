@@ -4,19 +4,16 @@ import React, { useRef } from 'react'
 import { jsx } from 'theme-ui'
 import { useTransition, useChain, animated } from 'react-spring'
 import PropTypes from 'prop-types'
+import { Box } from 'rebass'
 
 import PackInit from './packs/packInit'
 import PackOpen from './packs/packOpen'
 import PackClosed from './packs/packClosed'
 import nodeTypes from './packPropsTypes'
-
-export const INIT = 'INIT'
-export const SELECTED = 'SELECTED'
-export const UNSELECT = 'UNSELECT'
-export const tabSize = 92
+import { INIT, SELECTED, UNSELECT, tabSize } from './packUtils'
 
 const Pack = ({ state, measure, count, click, ...node }) => {
-  const { frontmatter, matches } = node
+  const { frontmatter, isXL } = node
   const { numero: num, bgColor } = frontmatter
   const { width: screenW, height: screenH } = measure
   const config = { mass: 1, tension: 180, friction: 30 }
@@ -32,18 +29,16 @@ const Pack = ({ state, measure, count, click, ...node }) => {
 
   // Animation Slider style
   const slideRef = useRef()
-  const transitionsWrap = useTransition(matches ? packW : packH, null, {
+  const transitionsWrap = useTransition(isXL ? packW : packH, null, {
     from:
-      selectedFlex && matches
+      selectedFlex && isXL
         ? { width: tabSize, height: screenH }
         : { height: 0, width: screenW },
-    enter: matches ? { width: packW } : { height: packH },
-    leave: matches ? { width: 0 } : { height: 0 },
+    enter: isXL ? { width: packW } : { height: packH },
+    leave: isXL ? { width: 0 } : { height: 0 },
     config,
     ref: slideRef
   })
-
-  console.log({ packW, packH })
 
   // // Animations next scale content
   const contentRef = useRef()
@@ -59,7 +54,6 @@ const Pack = ({ state, measure, count, click, ...node }) => {
     ref: contentRef,
     unique: true,
     reset: true
-    // config
   })
 
   useChain(
@@ -100,19 +94,16 @@ const Pack = ({ state, measure, count, click, ...node }) => {
                 justifyContent: 'center'
               }}
             >
-              <div
-                sx={{
-                  p: 0,
-                  m: 0,
-                  minHeight: matches ? `60vh` : null,
-                  position: 'relative',
-                  border: `2px solid yellow`
-                }}
+              <Box
+                m={0}
+                p={0}
+                position="relative"
+                sx={{ minHeight: isXL ? `60vh` : null }}
               >
                 {state === INIT && <PackInit {...node} />}
                 {state === SELECTED && <PackOpen {...node} />}
                 {state === UNSELECT && <PackClosed {...node} />}
-              </div>
+              </Box>
             </animated.div>
           )
       )}

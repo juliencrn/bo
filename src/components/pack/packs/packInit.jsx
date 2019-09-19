@@ -1,11 +1,13 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { jsx, Box } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
+import { Box, Text } from 'rebass'
+
 import PackTitle from '../packTitle'
 
-const PackInit = ({ frontmatter, matches }) => {
+const PackInit = ({ frontmatter, isXL }) => {
   const { title, color, numero, excerpt } = frontmatter
   return (
     <>
@@ -13,17 +15,17 @@ const PackInit = ({ frontmatter, matches }) => {
         pack={`Pack ${numero}`}
         title={title}
         color={color}
-        matches={matches}
+        isXL={isXL}
       />
       <Box
         sx={{
           width: `100%`,
-          position: matches ? 'absolute' : null,
-          top: matches ? `50%` : null,
+          position: isXL ? 'absolute' : null,
+          top: isXL ? `50%` : null,
           left: 0
         }}
       >
-        <p sx={{ fontSize: [0, 1] }}>{excerpt}</p>
+        <Text sx={{ fontSize: [0, 1] }}>{excerpt}</Text>
       </Box>
     </>
   )
@@ -36,7 +38,7 @@ PackInit.propTypes = {
     numero: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired
   }).isRequired,
-  matches: PropTypes.bool.isRequired
+  isXL: PropTypes.bool.isRequired
 }
 
 export default PackInit

@@ -1,22 +1,22 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import { jsx, Flex, Box } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Flex, Box } from 'rebass'
 
 import PackTitle from '../packTitle'
 import Button from '../../button'
 
-const PackOpen = ({ matches, frontmatter, body }) => {
+const PackOpen = ({ isXL, frontmatter, body }) => {
   const cols = [4 / 12, 5 / 12, 3 / 12].map(el => `${el * 100}%`)
-  const colWidth = index => (matches ? cols[index - 1] : `100%`)
-  console.log({ cols })
+  const colWidth = index => (isXL ? cols[index - 1] : `100%`)
   const { title, color, numero } = frontmatter
   return (
     <Flex
       sx={{
-        flexDirection: matches ? `row` : `column`,
+        flexDirection: isXL ? `row` : `column`,
         mx: -3
       }}
     >
@@ -32,7 +32,7 @@ const PackOpen = ({ matches, frontmatter, body }) => {
           color={color}
           pack={`pack ${numero}`}
           title={title}
-          matches={matches}
+          isXL={isXL}
         />
       </Box>
       <Box sx={{ p: 3, width: colWidth(2) }}>
@@ -59,7 +59,7 @@ PackOpen.propTypes = {
     numero: PropTypes.number.isRequired,
     color: PropTypes.string.isRequired
   }).isRequired,
-  matches: PropTypes.bool.isRequired,
+  isXL: PropTypes.bool.isRequired,
   body: PropTypes.string.isRequired
 }
 
