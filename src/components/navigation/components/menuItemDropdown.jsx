@@ -1,19 +1,35 @@
 /** @jsx jsx */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { jsx } from 'theme-ui'
 import uniqid from 'uniqid'
 import PropTypes from 'prop-types'
-import { Box, Flex } from 'rebass'
+import { Box } from 'rebass'
+import { useSpring, animated } from 'react-spring'
 
 import Item from './menuItem'
 import ButtonReset from '../../buttonReset'
+import useMeasure from '../../../hooks/useMeasure'
 
 const ItemDropdown = ({ label, childs, isXL }) => {
-  const [open, setOpen] = useState(!isXL)
+  const [open, setOpen] = useState(false)
+  const [bind, { height: viewHeight }] = useMeasure()
+  const { height, opacity, transform } = useSpring({
+    from: {
+      overflow: 'hidden',
+      height: 0,
+      opacity: 0,
+      transform: 'translate3d(20px,0,0)'
+    },
+    to: {
+      height: open ? viewHeight : 0,
+      opacity: open ? 1 : 0,
+      transform: `translate3d(${open ? 0 : 20}px, 0, 0)`
+    }
+  })
   return (
     <span
-      sx={{ position: 'relative', display: 'inline-block' }}
+      sx={{ display: 'inline-block' }}
       onMouseLeave={() => isXL && setOpen(false)}
       onMouseEnter={() => isXL && setOpen(true)}
     >
@@ -27,23 +43,25 @@ const ItemDropdown = ({ label, childs, isXL }) => {
       >
         <Item>{label}</Item>
       </ButtonReset>
-      {open && (
-        <Box
-          sx={{
-            width: 'auto',
-            position: isXL ? 'absolute' : 'relative',
-            ml: isXL ? 0 : 4
-          }}
-        >
+
+      <animated.div
+        style={{
+          opacity,
+          height: open ? 'auto' : height,
+          willChange: 'opacity, height',
+          position: isXL ? 'absolute' : 'relative'
+        }}
+      >
+        <animated.div style={{ willChange: 'transform', transform }} {...bind}>
           {childs.map(({ label: text, to }) => (
-            <Flex key={uniqid(text)}>
+            <Box ml={isXL ? 0 : 3} key={uniqid(text)}>
               <Item link={to} child>
                 {text}
               </Item>
-            </Flex>
+            </Box>
           ))}
-        </Box>
-      )}
+        </animated.div>
+      </animated.div>
     </span>
   )
 }

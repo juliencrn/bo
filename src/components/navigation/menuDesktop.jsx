@@ -4,6 +4,8 @@ import React from 'react'
 import { Box } from 'rebass'
 import { jsx } from 'theme-ui'
 import { useTransition, animated } from 'react-spring'
+import PropTypes from 'prop-types'
+import stylePropTypes from 'react-style-proptype'
 
 import Burger from './components/burger'
 import Menu from './components/menu'
@@ -37,6 +39,18 @@ function MenuDesktop({
       </animated.div>
     )
   )
+}
+
+MenuDesktop.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  siteName: PropTypes.string.isRequired,
+  shortTitle: PropTypes.string.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  margins: PropTypes.shape({
+    m: PropTypes.arrayOf(PropTypes.number)
+  }),
+  open: PropTypes.bool.isRequired,
+  style: stylePropTypes.isRequired
 }
 
 export default MenuDesktop
