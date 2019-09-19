@@ -8,7 +8,6 @@ export const colors = {
   bluePint: `#344abf`,
   green: `#5bc0be`,
   blue: `#4834C0`,
-  red: `#ff2b4a`,
   fushia: `#ff196b`,
   saumon: `#ffa5b9`,
   saumonLight: `#f3a9bb`,
@@ -16,7 +15,6 @@ export const colors = {
   white: `#fff`,
   pink: `#ff9ad6`,
   pinkLight: `#ffc0e5`,
-  darkBlue: `#111447`,
   font: `#0b1227`
 }
 

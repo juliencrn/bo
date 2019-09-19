@@ -12,7 +12,7 @@ import Section from '../components/section'
 function mapColors(color) {
   switch (color) {
     case 'rouge':
-      return 'red'
+      return 'fushia'
     case 'rose':
       return 'saumon'
     case 'vert':
