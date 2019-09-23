@@ -6,20 +6,27 @@ import PropTypes from 'prop-types'
 
 import Avatar from './avatar'
 
-const AvatarList = ({ members, siteName }) => {
+const AvatarList = ({ members, siteName, visible, hide }) => {
   return (
     <>
       <Styled.h2
         sx={{
-          color: 'red',
+          color: 'fushia',
           fontSize: [5, 5, 6],
-          textAlign: 'center'
+          textAlign: 'center',
+          position: 'absolute',
+          m: 0,
+          top: `50%`,
+          left: `50%`,
+          transform: `translate(-50%, -50%)`,
+          zIndex: visible ? 10 : -1,
+          display: hide ? 'none' : 'inherit'
         }}
       >
         {siteName}
       </Styled.h2>
       {members.map(({ id, ...rest }) => (
-        <Avatar key={id} {...rest} />
+        <Avatar key={id} {...rest} visible={visible} hide={hide} />
       ))}
     </>
   )
@@ -32,7 +39,9 @@ AvatarList.propTypes = {
       frontmatter: PropTypes.object
     })
   ).isRequired,
-  siteName: PropTypes.string.isRequired
+  siteName: PropTypes.string.isRequired,
+  visible: PropTypes.bool.isRequired,
+  hide: PropTypes.bool.isRequired
 }
 
 export default AvatarList

@@ -7,10 +7,7 @@ import PropTypes from 'prop-types'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import AvatarList from '../components/members/avatar/avatarList'
-import BigText from '../components/bigText'
-import Section from '../components/section'
-import Container from '../components/container'
+import MembersSection from '../sections/members.section'
 
 const MembersPage = ({ data }) => {
   const { members: baseMembers, images, site } = data
@@ -37,12 +34,7 @@ const MembersPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="L'équipe" />
-      <Section bg="blue" color="white" fullScreen>
-        <Container>
-          <BigText />
-          <AvatarList members={members} siteName={siteName} />
-        </Container>
-      </Section>
+      <MembersSection members={members} siteName={siteName} />
     </Layout>
   )
 }

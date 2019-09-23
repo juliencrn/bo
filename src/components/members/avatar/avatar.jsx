@@ -10,7 +10,7 @@ import { Box, Flex } from 'rebass'
 import IconMore from '../../../../static/svg/plus-sign-to-add.svg'
 import Text from './text'
 
-const Avatar = ({ frontmatter, fields }) => {
+const Avatar = ({ frontmatter, fields, visible, hide }) => {
   const [alignLeft, setAlign] = useState(false)
   const [hover, setHover] = useState(false)
   const { avatar, title, profession, professionCool, bgColor } = frontmatter
@@ -19,14 +19,19 @@ const Avatar = ({ frontmatter, fields }) => {
     <Link
       to={slug}
       sx={{
-        display: 'flex',
         flexDirection: alignLeft ? 'row' : 'row-reverse',
         justifyContent: 'center',
         width: `400px`,
         maxWidth: `100%`,
+        position: 'absolute',
+        top: `80%`,
+        left: `20%`,
+        transform: `translate(-50%, -50%)`,
         py: [3],
         px: [3],
-        cursor: 'pointer'
+        cursor: 'pointer',
+        zIndex: visible ? 10 : -1,
+        display: hide ? 'none' : 'flex'
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -90,7 +95,9 @@ Avatar.propTypes = {
   }).isRequired,
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  visible: PropTypes.bool.isRequired,
+  hide: PropTypes.bool.isRequired
 }
 
 export default Avatar
