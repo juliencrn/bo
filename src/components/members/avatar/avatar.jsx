@@ -10,10 +10,10 @@ import { Box, Flex } from 'rebass'
 import IconMore from '../../../../static/svg/plus-sign-to-add.svg'
 import Text from './text'
 
-const Avatar = ({ frontmatter, fields, size, alignLeft }) => {
+const Avatar = ({ frontmatter, fields, size, alignLeft, hover, setHover }) => {
   const { avatar, title, profession, professionCool, bgColor } = frontmatter
   const { slug } = fields
-  const [hover, setHover] = useState(false)
+
   return (
     <Link
       to={slug}
@@ -26,24 +26,25 @@ const Avatar = ({ frontmatter, fields, size, alignLeft }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Flex
-        sx={{
-          color: bgColor,
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          px: 3
-        }}
-      >
-        <Text text={title} />
-        <Text
-          text={profession}
-          uppercase
-          line
-          sx={{ fontWeight: 'bold', fontSize: 2 }}
-        />
-        <Text text={professionCool} uppercase />
-      </Flex>
-
+      {hover && (
+        <Flex
+          sx={{
+            color: bgColor,
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            px: 3
+          }}
+        >
+          <Text text={title} />
+          <Text
+            text={profession}
+            uppercase
+            line
+            sx={{ fontWeight: 'bold', fontSize: 2 }}
+          />
+          <Text text={professionCool} uppercase />
+        </Flex>
+      )}
       <Box
         sx={{
           width: [`${size.height}px`],
@@ -90,7 +91,30 @@ Avatar.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string
   }).isRequired,
-  alignLeft: PropTypes.bool.isRequired
+  alignLeft: PropTypes.bool.isRequired,
+  hover: PropTypes.bool.isRequired,
+  setHover: PropTypes.func.isRequired
 }
 
 export default Avatar
+
+/*
+Text card part
+<Flex
+        sx={{
+          color: bgColor,
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          px: 3
+        }}
+      >
+        <Text text={title} />
+        <Text
+          text={profession}
+          uppercase
+          line
+          sx={{ fontWeight: 'bold', fontSize: 2 }}
+        />
+        <Text text={professionCool} uppercase />
+      </Flex>
+ */
