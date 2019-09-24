@@ -10,38 +10,28 @@ import { Box, Flex } from 'rebass'
 import IconMore from '../../../../static/svg/plus-sign-to-add.svg'
 import Text from './text'
 
-const Avatar = ({ frontmatter, fields, visible, hide }) => {
-  const [alignLeft, setAlign] = useState(false)
-  const [hover, setHover] = useState(false)
+const Avatar = ({ frontmatter, fields, size, alignLeft }) => {
   const { avatar, title, profession, professionCool, bgColor } = frontmatter
   const { slug } = fields
+  const [hover, setHover] = useState(false)
   return (
     <Link
       to={slug}
       sx={{
         flexDirection: alignLeft ? 'row' : 'row-reverse',
         justifyContent: 'center',
-        width: `400px`,
-        maxWidth: `100%`,
-        position: 'absolute',
-        top: `80%`,
-        left: `20%`,
-        transform: `translate(-50%, -50%)`,
-        py: [3],
-        px: [3],
-        cursor: 'pointer',
-        zIndex: visible ? 10 : -1,
-        display: hide ? 'none' : 'flex'
+        display: 'flex',
+        cursor: 'pointer'
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       <Flex
         sx={{
-          px: [3],
           color: bgColor,
           flexDirection: 'column',
-          justifyContent: 'flex-end'
+          justifyContent: 'flex-end',
+          px: 3
         }}
       >
         <Text text={title} />
@@ -56,8 +46,8 @@ const Avatar = ({ frontmatter, fields, visible, hide }) => {
 
       <Box
         sx={{
-          width: ['145px'],
-          height: ['145px'],
+          width: [`${size.height}px`],
+          height: [`${size.height}px`],
           backgroundColor: bgColor,
           overflow: 'hidden',
           borderRadius: '50%',
@@ -96,8 +86,11 @@ Avatar.propTypes = {
   fields: PropTypes.shape({
     slug: PropTypes.string.isRequired
   }).isRequired,
-  visible: PropTypes.bool.isRequired,
-  hide: PropTypes.bool.isRequired
+  size: PropTypes.shape({
+    width: PropTypes.string,
+    height: PropTypes.string
+  }).isRequired,
+  alignLeft: PropTypes.bool.isRequired
 }
 
 export default Avatar

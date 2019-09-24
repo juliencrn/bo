@@ -4,7 +4,8 @@ import React from 'react'
 import { jsx, Styled } from 'theme-ui'
 import PropTypes from 'prop-types'
 
-import Avatar from './avatar'
+import AvatarAnimation from './avatarAnimation'
+import Neon from '../../neon'
 
 const AvatarList = ({ members, siteName, visible, hide }) => {
   return (
@@ -23,10 +24,10 @@ const AvatarList = ({ members, siteName, visible, hide }) => {
           display: hide ? 'none' : 'inherit'
         }}
       >
-        {siteName}
+        <Neon text={siteName} />
       </Styled.h2>
       {members.map(({ id, ...rest }) => (
-        <Avatar key={id} {...rest} visible={visible} hide={hide} />
+        <AvatarAnimation key={id} {...rest} visible={visible} hide={hide} />
       ))}
     </>
   )
