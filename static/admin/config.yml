@@ -54,14 +54,14 @@ collections:
         widget: select
         options:
           - { label: "Vert", value: "green" }
-          - { label: "rouge", value: "red" }
+          - { label: "rouge", value: "fushia" }
           - { label: "Saumon", value: "saumon" }
       - name: color
         label: Couleur du mail
         widget: select
         options:
           - { label: "Vert", value: "green" }
-          - { label: "rouge", value: "red" }
+          - { label: "rouge", value: "fushia" }
       - label: Avantages
         name: skills
         widget: list

@@ -7,7 +7,7 @@ professionCool: Ensorceleuse de mots
 mail: nathalie@bengale.studio
 avatar: /uploads/nathalie.jpg
 bgColor: green
-color: red
+color: fushia
 skills:
   - label: Auteur du Blog Oser Écrire
     link: 'https://www.oser-ecrire.fr/'

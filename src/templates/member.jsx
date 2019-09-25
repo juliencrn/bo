@@ -2,135 +2,97 @@
 // eslint-disable-next-line no-unused-vars
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { jsx } from 'theme-ui'
-import { Box, Flex, Heading } from 'rebass'
 
 import Layout from '../components/layout'
-import Container from '../components/container'
-import Mail from '../components/mail'
-import BigText from '../components/bigText'
-import Section from '../components/section'
-import LinkList from '../components/members/linkList'
-import { childrenPT } from '../utils/propTypes'
+import MemberSingle from '../sections/member.single'
+import MemberArrow from '../components/members/arrow'
 
-const Col = ({ children }) => (
-  <Box
-    sx={{
-      width: ['100%', '50%'],
-      px: 3,
-      py: 4
-    }}
-  >
-    <Flex
-      sx={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        height: '100%'
-      }}
-    >
-      {children}
-    </Flex>
-  </Box>
-)
+export default function PostTemplate({ data, pageContext }) {
+  // Get the current post from posts list
+  const member = data.allMdx.edges.filter(
+    ({ node }) => node.id === pageContext.id
+  )[0]
 
-Col.propTypes = { children: childrenPT.isRequired }
-
-export default function PostTemplate({ data }) {
-  const { body, frontmatter } = data.getMembers
-  const {
-    bgColor,
-    color,
-    firstname,
-    lastname,
-    mail,
-    socialLinks,
-    skills,
-    profession
-  } = frontmatter
-
+  const { previous, next, node } = member
   return (
     <Layout>
-      <Section bg={bgColor} color="white" fullScreen>
-        <Container>
-          <Flex sx={{ mx: -3, flexWrap: 'wrap' }}>
-            <Col>
-              <Heading
-                sx={{
-                  textTransform: 'uppercase',
-                  fontWeight: 'body',
-                  fontFamily: 'body'
-                }}
-              >{`${firstname} ${lastname}`}</Heading>
-              <LinkList list={[{ label: profession, link: '' }, ...skills]} />
-            </Col>
-            <Col>
-              <BigText sx={{ fontSize: 4 }}>
-                <MDXRenderer>{body}</MDXRenderer>
-              </BigText>
-            </Col>
-            <Col>
-              <LinkList list={socialLinks} />
-            </Col>
-            <Col>
-              <Mail mail={mail} color={color} />
-            </Col>
-          </Flex>
-        </Container>
-      </Section>
+      <div sx={{ position: 'relative' }} />
+      {previous && <MemberArrow slug={previous.fields.slug} />}
+      <MemberSingle {...node} />
+      {next && <MemberArrow slug={next.fields.slug} next />}
     </Layout>
   )
 }
 
 PostTemplate.propTypes = {
+  pageContext: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired,
   data: PropTypes.shape({
-    getMembers: PropTypes.shape({
-      body: PropTypes.string.isRequired,
-      frontmatter: PropTypes.shape({
-        firstname: PropTypes.string,
-        lastname: PropTypes.string,
-        mail: PropTypes.string,
-        bgColor: PropTypes.string,
-        color: PropTypes.string,
-        profession: PropTypes.string,
-        professionCool: PropTypes.string,
-        skills: PropTypes.arrayOf(
-          PropTypes.shape({
-            label: PropTypes.string.isRequired,
-            link: PropTypes.string
-          })
-        ),
-        socialLinks: PropTypes.arrayOf(
-          PropTypes.shape({
-            label: PropTypes.string.isRequired,
-            link: PropTypes.string
-          })
-        )
-      }).isRequired
-    }).isRequired
-  }).isRequired
+    allMdx: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            id: PropTypes.string.isRequired
+          }),
+          next: PropTypes.object,
+          previous: PropTypes.object
+        })
+      )
+    })
+  })
+}
+
+PostTemplate.defaultProps = {
+  data: {
+    allMdx: {
+      edges: [
+        {
+          node: {},
+          next: null,
+          previous: null
+        }
+      ]
+    }
+  }
 }
 
 export const pageQuery = graphql`
-  query($id: String) {
-    getMembers: mdx(id: { eq: $id }) {
-      body
-      frontmatter {
-        title
-        firstname
-        lastname
-        mail
-        profession
-        professionCool
-        bgColor
-        color
-        socialLinks {
-          label
-          link
+  query {
+    allMdx(filter: { fileAbsolutePath: { regex: "//members//" } }) {
+      edges {
+        previous {
+          id
+          fields {
+            slug
+          }
         }
-        skills {
-          label
-          link
+        next {
+          id
+          fields {
+            slug
+          }
+        }
+        node {
+          id
+          body
+          frontmatter {
+            title
+            firstname
+            lastname
+            mail
+            profession
+            professionCool
+            bgColor
+            color
+            socialLinks {
+              label
+              link
+            }
+            skills {
+              label
+              link
+            }
+          }
         }
       }
     }

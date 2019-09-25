@@ -97,24 +97,3 @@ Avatar.propTypes = {
 }
 
 export default Avatar
-
-/*
-Text card part
-<Flex
-        sx={{
-          color: bgColor,
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          px: 3
-        }}
-      >
-        <Text text={title} />
-        <Text
-          text={profession}
-          uppercase
-          line
-          sx={{ fontWeight: 'bold', fontSize: 2 }}
-        />
-        <Text text={professionCool} uppercase />
-      </Flex>
- */
